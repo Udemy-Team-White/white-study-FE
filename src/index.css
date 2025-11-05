@@ -1,5 +1,45 @@
+@font-face {
+  font-family: "Pretendard";
+  src:
+    local("Pretendard"),
+    url("/fonts/Pretendard-Regular.woff2") format("woff2"),
+    url("/fonts/Pretendard-Regular.woff") format("woff"),
+    url("/fonts/Pretendard-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src:
+    local("Pretendard"),
+    url("/fonts/Pretendard-Bold.woff2") format("woff2"),
+    url("/fonts/Pretendard-Bold.woff") format("woff"),
+    url("/fonts/Pretendard-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Impact";
+  src:
+    local("Impact"),
+    url("https://fonts.cdnfonts.com/s/14575/impact.woff2") format("woff2"),
+    url("https://fonts.cdnfonts.com/s/14575/impact.woff") format("woff"),
+    url("https://fonts.cdnfonts.com/s/14575/impact.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family:
+    "Pretendard",
+    -apple-system,
+    sans-serif;
+}
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Pretendard", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -28,6 +68,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased; /* macOS용 */
+  -moz-osx-font-smoothing: grayscale; /* Firefox macOS용 */
+  text-rendering: optimizeLegibility; /* 커닝 및 부드럽게 */
+  font-smooth: always; /* 일부 브라우저에서만 작동 */
 }
 
 h1 {
@@ -36,22 +80,10 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: 0;
+  background-color: transparent;
+  height: 40px;
+  border-radius: 6px;
 }
 
 @media (prefers-color-scheme: light) {
