@@ -19,7 +19,6 @@ const ProfileBox = styled.div`
   gap: 0.75rem;
 
   @media (min-width: 767px) {
-    margin: 0;
     flex-direction: row;
     align-items: stretch;
     gap: 1.75rem;
@@ -123,7 +122,7 @@ const EditButton = styled.button`
 
 const ProfileComp = ({ data }) => {
   const [isEditable, setIsEditable] = useState(false);
-  const isDesktop = useMediaQuery({ minWidth: 768 });
+  const isDesktop = useMediaQuery({ minWidth: 767 });
   const {
     register,
     handleSubmit,
