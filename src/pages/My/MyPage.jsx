@@ -8,6 +8,8 @@ const MyPageBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 52px;
+  max-width: 1080px;
+  margin: 0 auto;
 `;
 
 const MyPage = () => {
