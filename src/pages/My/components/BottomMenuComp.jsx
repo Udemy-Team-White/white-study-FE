@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MenuButtonStyle } from "../../../components/common/button";
 import { Red } from "../../../styles/colors";
+import { useAuth } from "../../../api/hooks/useAuth";
 
 const BottomMenuBox = styled.div`
   display: flex;
@@ -14,11 +15,13 @@ const BottomMenuItem = styled.button`
 `;
 
 const BottomMenuComp = () => {
+  const { handleLogout } = useAuth();
+
   return (
     <BottomMenuBox>
       <BottomMenuItem>아이디 변경</BottomMenuItem>
       <BottomMenuItem>비밀번호 변경</BottomMenuItem>
-      <BottomMenuItem>로그아웃</BottomMenuItem>
+      <BottomMenuItem onClick={handleLogout}>로그아웃</BottomMenuItem>
       <BottomMenuItem color={Red}>회원탈퇴</BottomMenuItem>
     </BottomMenuBox>
   );
