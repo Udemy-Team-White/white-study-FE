@@ -99,7 +99,6 @@ export const MenuButtonStyle = css`
   background-color: ${White};
   border-radius: 0;
   border-top: 1px ${Gray3} solid;
-  /* border-bottom: 1px ${Gray3} solid; */
   ${Body}
   transition:
     background-color 0.3s ease,

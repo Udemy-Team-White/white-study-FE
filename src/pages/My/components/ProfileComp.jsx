@@ -6,6 +6,7 @@ import { useState } from "react";
 import { InputStyle } from "../../../components/common/input";
 import {
   GrayButtonStyle,
+  IconButtonStyle,
   LilacButtonStyle,
 } from "../../../components/common/button";
 import { useForm } from "react-hook-form";
@@ -120,6 +121,10 @@ const EditButton = styled.button`
   }
 `;
 
+const StyledBiSolidEditIcon = styled(BiSolidEdit)`
+  ${IconButtonStyle}
+`;
+
 const ProfileComp = ({ data }) => {
   const [isEditable, setIsEditable] = useState(false);
   const isDesktop = useMediaQuery({ minWidth: 767 });
@@ -178,7 +183,10 @@ const ProfileComp = ({ data }) => {
           <ProfileBioBox>
             <ProfileNicknameBox>
               <ProfileNickname>{data?.username}</ProfileNickname>
-              <BiSolidEdit size={24} onClick={() => setIsEditable(true)} />
+              <StyledBiSolidEditIcon
+                size={24}
+                onClick={() => setIsEditable(true)}
+              />
             </ProfileNicknameBox>
             <ProfileBio>{data?.bio}</ProfileBio>
           </ProfileBioBox>
