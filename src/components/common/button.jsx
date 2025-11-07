@@ -9,6 +9,7 @@ import {
   Lilac1,
   Lilac2,
   Lilac3,
+  Lilac7,
   Red,
   Red1,
   Red2,
@@ -117,4 +118,14 @@ export const PraiseBoxStyle = css`
   border-radius: 6px;
   ${BodyBold}
   color: ${White};
+`;
+
+export const IconButtonStyle = css`
+  color: ${StudyLilac};
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${Lilac7};
+  }
 `;
