@@ -3,6 +3,8 @@ import api from "../api";
 import { useDispatch } from "react-redux";
 import { login } from "@/store/userSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "@/store/userSlice";
 
 // 실제 API 대체용
 const mockLogin = async (data) => {
@@ -24,12 +26,12 @@ const mockLogin = async (data) => {
 //   return res.data; // { accessToken, user }
 // };
 
-export const useLogin = () => {
+export const useAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  return useMutation({
-    mutationFn: mockLogin, // 추후 api.post("/auth/login", data)
+  const loginMutation = useMutation({
+    mutationFn: mockLogin,
     onSuccess: (res) => {
       localStorage.setItem("accessToken", res.accessToken);
       localStorage.setItem("user", JSON.stringify(res.user));
@@ -42,4 +44,15 @@ export const useLogin = () => {
       console.error("로그인 실패 :", err.message);
     },
   });
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+
+    dispatch(logout());
+
+    navigate("/");
+  };
+
+  return { loginMutation, handleLogout };
 };
