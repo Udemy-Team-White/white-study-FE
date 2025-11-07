@@ -22,7 +22,12 @@ export const GrayButtonStyle = css`
   background-color: ${Gray1};
   border: 1px ${Gray1} solid;
   ${Body}
-  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
   &:hover {
     background-color: ${Gray2};
   }
@@ -36,9 +41,12 @@ export const BasicButtonStyle = css`
   border: 1px ${StudyLilac} solid;
   color: ${StudyLilac};
   ${BodyBold}
+  cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+
   &:hover {
     background-color: ${Lilac1};
   }
@@ -52,9 +60,12 @@ export const LilacButtonStyle = css`
   border: 1px ${StudyLilac} solid;
   color: ${White};
   ${BodyBold}
+  cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+
   &:hover {
     background-color: ${Lilac3};
   }
@@ -68,9 +79,12 @@ export const RedButtonStyle = css`
   border: 1px ${Red} solid;
   color: ${White};
   ${BodyBold}
+  cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+
   &:hover {
     background-color: ${Red2};
   }
@@ -84,9 +98,12 @@ export const GreenButtonStyle = css`
   border: 1px ${Green} solid;
   color: ${White};
   ${BodyBold}
+  cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+
   &:hover {
     background-color: ${Green2};
   }
@@ -100,9 +117,12 @@ export const MenuButtonStyle = css`
   border-radius: 0;
   border-top: 1px ${Gray3} solid;
   ${Body}
+  cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+
   &:hover {
     background-color: ${Gray1};
   }
@@ -122,6 +142,7 @@ export const PraiseBoxStyle = css`
 export const IconButtonStyle = css`
   color: ${StudyLilac};
   cursor: pointer;
+
   transition: color 0.3s ease;
 
   &:hover {
