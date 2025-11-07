@@ -37,6 +37,8 @@ const Shortcut = styled.div`
   border-radius: 12px;
   width: 100%;
   box-sizing: border-box;
+
+  cursor: pointer;
 `;
 
 const ShortcutTextBox = styled.div`
@@ -44,10 +46,12 @@ const ShortcutTextBox = styled.div`
   flex-direction: column;
   align-items: start;
   gap: 0.75rem;
+  cursor: pointer;
 `;
 
 const ShortcutText = styled.div`
   ${Heading5Bold}
+  cursor: pointer;
 `;
 
 const ShortcutCaption = styled.a`
