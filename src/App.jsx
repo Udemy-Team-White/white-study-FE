@@ -9,6 +9,7 @@ import Header from "@/components/layout/Header";
 import LoginPage from "@/pages/Login/LoginPage";
 import MyPage from "@/pages/My/MyPage";
 import HomePage from "@/pages/Home/HomePage";
+import RegisterPage from "./pages/Register/RegisterPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,14 @@ function App() {
           path="/login"
           element={
             isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />
+          }
+        />
+
+        {/* 회원가입 페이지 */}
+        <Route
+          path="/register"
+          element={
+            isAuthenticated ? <Navigate to="/" replace /> : <RegisterPage />
           }
         />
 
