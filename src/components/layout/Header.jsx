@@ -6,6 +6,8 @@ import { useMediaQuery } from "react-responsive";
 import { FaBell, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { IconButtonStyle } from "../common/button";
+import { useDispatch } from "react-redux";
+import { toggleIsOpen } from "../../store/uiSlice";
 
 const Container = styled.div`
   position: fixed;
@@ -69,6 +71,8 @@ const StyledFaUserIcon = styled(FaUser)`
 `;
 
 const Header = ({ user }) => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const isDesktop = useMediaQuery({ minWidth: 767 });
@@ -87,7 +91,10 @@ const Header = ({ user }) => {
           <IconBox>
             {isDesktop && <HeaderText>스터디 개설하기</HeaderText>}
             <StyledFaBellIcon size={28} />
-            <StyledFaUserIcon size={28} />
+            <StyledFaUserIcon
+              size={28}
+              onClick={() => dispatch(toggleIsOpen())}
+            />
           </IconBox>
         )}
       </HeaderBox>
