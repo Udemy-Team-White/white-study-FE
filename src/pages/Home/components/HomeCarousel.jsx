@@ -1,4 +1,5 @@
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import {
@@ -23,7 +24,7 @@ const EmblaSlide = styled.div`
   padding: 0 3rem;
   box-sizing: border-box;
 
-  margin-left: 4rem;
+  margin-left: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -39,6 +40,7 @@ const EmblaSlide = styled.div`
 
   @media (min-width: 767px) {
     padding: 0 5.5rem;
+    margin-left: 4rem;
   }
 `;
 
@@ -69,15 +71,8 @@ const SliderText = styled.div`
 useEmblaCarousel.globalOptions = { loop: true };
 
 const HomeCarousel = () => {
-  const [options, setOptions] = useState({ loop: true });
-  const [emblasRef] = useEmblaCarousel(options);
-
-  const toggleLoop = useCallback(() => {
-    setOptions((currentOptions) => ({
-      ...currentOptions,
-      loop: !currentOptions.loop,
-    }));
-  }, []);
+  const autoplay = Autoplay({ delay: 5000 });
+  const [emblasRef] = useEmblaCarousel({ loop: true }, [autoplay]);
 
   return (
     <Embla ref={emblasRef}>
