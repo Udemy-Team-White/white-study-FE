@@ -29,8 +29,8 @@ const ButtonSize = css`
 
 const ButtonBox = styled.div`
   ${ButtonSize};
-  color: ${(props) => props.active && StudyLilac};
-  ${(props) => props.active && BodyBold}
+  color: ${(props) => props.$active && StudyLilac};
+  ${(props) => props.$active && BodyBold}
 `;
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -63,7 +63,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       {pageNumbers.map((num) => (
         <ButtonBox
           key={num}
-          active={num === currentPage}
+          $active={num === currentPage}
           onClick={() => onPageChange(num)}
         >
           {num}
