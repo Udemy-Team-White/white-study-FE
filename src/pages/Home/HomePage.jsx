@@ -5,6 +5,7 @@ import { useState } from "react";
 import StudyBox from "./components/StudyBox";
 import styled from "styled-components";
 import HomeCarousel from "./components/HomeCarousel";
+import { useGetStudies } from "../../api/queries/useGetStudies";
 
 const HeaderBlock = styled.div`
   height: 63px;
@@ -26,7 +27,15 @@ const HomePage = () => {
   const { handleLogout } = useAuth();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 13;
+
+  const { StudiesData } = useGetStudies({
+    page: currentPage - 1,
+    size: 8,
+    keyword: "",
+    sortBy: "latest",
+  });
+
+  const totalPages = StudiesData?.pageInfo?.totalPages;
 
   return (
     <>
@@ -37,13 +46,13 @@ const HomePage = () => {
       <div onClick={() => navigate("/login")}>로그인 페이지</div>
       <div onClick={() => navigate("/my")}>마이 페이지</div>
       <StudyContainer>
-        <StudyBox />
-        <StudyBox />
-        <StudyBox />
+        {StudiesData?.studies.map((data, index) => (
+          <StudyBox key={"study" + index} data={data} />
+        ))}
       </StudyContainer>
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={totalPages || 1}
         onPageChange={setCurrentPage}
       />
     </>

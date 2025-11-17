@@ -10,6 +10,8 @@ import {
   StudyLilac,
   White,
 } from "../../../styles/colors";
+import { filterStudyType } from "../../../utils/filterStudyType";
+import { formatDate } from "../../../utils/formatDate";
 
 const ContainerTop = styled.div`
   display: flex;
@@ -122,24 +124,23 @@ const Container = styled.div`
   }
 `;
 
-const StudyBox = () => {
+const StudyBox = ({ data }) => {
   return (
     <Container>
       <ContainerTop>
-        <OnlineTag>온·오프라인</OnlineTag>
-        <Date>2025. 10. 25</Date>
+        <OnlineTag>{filterStudyType(data?.studyType)}</OnlineTag>
+        <Date>{formatDate(data?.createAt)}</Date>
       </ContainerTop>
-      <Title>영어 스터디원 모집 두 줄까지 출력 가능</Title>
+      <Title>{data?.title}</Title>
       <TagBox>
-        <Tag>데이터베이스</Tag>
-        <Tag>데이터베이스</Tag>
-        <Tag>데이터베이스</Tag>
-        <Tag>데이터베이스</Tag>
-        <Tag>데이터베이스</Tag>
-        <Tag>데이터베이스</Tag>
+        {data?.categories?.map((tagData, index) => (
+          <Tag key={"tag" + index}>{tagData}</Tag>
+        ))}
       </TagBox>
       <ContainerBottom>
-        <PersonnelBox> 3 / 5</PersonnelBox>
+        <PersonnelBox>
+          {data?.currentMembers} / {data?.maxMembers}
+        </PersonnelBox>
       </ContainerBottom>
     </Container>
   );
