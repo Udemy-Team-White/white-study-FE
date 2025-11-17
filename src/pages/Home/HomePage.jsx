@@ -15,6 +15,10 @@ const StudyContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 `;
 
 const HomePage = () => {
