@@ -4,8 +4,14 @@ import Pagination from "../../components/common/Pagination";
 import { useState } from "react";
 import StudyBox from "./components/StudyBox";
 import styled from "styled-components";
+import HomeCarousel from "./components/HomeCarousel";
 
-const Container = styled.div`
+const HeaderBlock = styled.div`
+  height: 63px;
+`;
+
+const StudyContainer = styled.div`
+  max-width: 1080px;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -20,15 +26,17 @@ const HomePage = () => {
 
   return (
     <>
+      <HeaderBlock />
+      <HomeCarousel />
       <div onClick={handleLogout}>로그아웃</div>
       <div onClick={() => navigate("/register")}>회원가입</div>
       <div onClick={() => navigate("/login")}>로그인 페이지</div>
       <div onClick={() => navigate("/my")}>마이 페이지</div>
-      <Container>
+      <StudyContainer>
         <StudyBox />
         <StudyBox />
         <StudyBox />
-      </Container>
+      </StudyContainer>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
