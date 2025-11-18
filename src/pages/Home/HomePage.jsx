@@ -6,9 +6,16 @@ import StudyBox from "./components/StudyBox";
 import styled from "styled-components";
 import HomeCarousel from "./components/HomeCarousel";
 import { useGetStudies } from "../../api/queries/useGetStudies";
+import Searchbar from "./components/Searchbar";
+
+const Container = styled.div`
+  display: flex;
+  gap: 48px;
+  flex-direction: column;
+`;
 
 const HeaderBlock = styled.div`
-  height: 63px;
+  height: 15px;
 `;
 
 const StudyContainer = styled.div`
@@ -34,23 +41,22 @@ const HomePage = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [keyword, setKeyword] = useState("");
+
   const { StudiesData } = useGetStudies({
     page: currentPage - 1,
     size: 8,
-    keyword: "",
+    keyword: keyword,
     sortBy: "latest",
   });
 
   const totalPages = StudiesData?.pageInfo?.totalPages;
 
   return (
-    <>
+    <Container>
       <HeaderBlock />
       <HomeCarousel />
-      <div onClick={handleLogout}>로그아웃</div>
-      <div onClick={() => navigate("/register")}>회원가입</div>
-      <div onClick={() => navigate("/login")}>로그인 페이지</div>
-      <div onClick={() => navigate("/my")}>마이 페이지</div>
+      <Searchbar setKeyword={setKeyword} setCurrentPage={setCurrentPage} />
       <StudyContainer>
         {StudiesData?.studies.map((data, index) => (
           <StudyBox key={"study" + index} data={data} />
@@ -63,7 +69,12 @@ const HomePage = () => {
           onPageChange={setCurrentPage}
         />
       </PaginationContainer>
-    </>
+
+      <div onClick={handleLogout}>로그아웃</div>
+      <div onClick={() => navigate("/register")}>회원가입</div>
+      <div onClick={() => navigate("/login")}>로그인 페이지</div>
+      <div onClick={() => navigate("/my")}>마이 페이지</div>
+    </Container>
   );
 };
 
