@@ -5,6 +5,7 @@ import { InputStyle } from "../../components/common/input";
 import { LilacButtonStyle } from "../../components/common/button";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const LoginBackground = styled.div`
   background-color: ${Lilac1};
@@ -60,9 +61,13 @@ const SubButtonBox = styled.div`
 const SubButton = styled.div`
   ${Body}
   color: ${Lilac6};
+
+  cursor: pointer;
 `;
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const { register, handleSubmit, reset } = useForm();
   const { loginMutation } = useAuth();
 
@@ -81,7 +86,9 @@ const LoginPage = () => {
           <ButtonBox>
             <LoginButton type="submit">로그인</LoginButton>
             <SubButtonBox>
-              <SubButton>회원가입</SubButton>
+              <SubButton onClick={() => navigate("/register")}>
+                회원가입
+              </SubButton>
               <SubButton>비밀번호 찾기</SubButton>
             </SubButtonBox>
           </ButtonBox>
