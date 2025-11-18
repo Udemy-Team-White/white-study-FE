@@ -3,9 +3,13 @@ import {
   BasicButtonStyle,
   LilacButtonStyle,
 } from "../../components/common/button";
-import { Body, Caption, Heading5Bold } from "../../styles/fonts";
-import { Lilac1, Lilac6, Red, White } from "../../styles/colors";
-import { InputStyle } from "../../components/common/input";
+import { Heading5Bold } from "../../styles/fonts";
+import { Lilac1, White } from "../../styles/colors";
+import {
+  ErrorBoxStyle,
+  ErrorMessageStyle,
+  InputStyle,
+} from "../../components/common/input";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/hooks/useAuth";
 import { useState } from "react";
@@ -66,15 +70,11 @@ const LoginButton = styled.button`
 `;
 
 const ErrorBox = styled.div`
-  position: relative;
-  height: 20px;
-  width: 100%;
+  ${ErrorBoxStyle}
 `;
 
 const ErrorMessage = styled.div`
-  ${Caption}
-  color: ${Red};
-  position: absolute;
+  ${ErrorMessageStyle}
 `;
 
 const RegisterPage = () => {
@@ -213,8 +213,8 @@ const RegisterPage = () => {
             </SubButton>
           </InputBox>
           <ErrorBox>
-            {errors.nickname && (
-              <ErrorMessage>{errors.nickname.message}</ErrorMessage>
+            {!errors.nickname && nicknameError && (
+              <ErrorMessage>{nicknameError}</ErrorMessage>
             )}
           </ErrorBox>
 
