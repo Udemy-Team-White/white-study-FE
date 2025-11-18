@@ -22,6 +22,12 @@ const StudyContainer = styled.div`
   box-sizing: border-box;
 `;
 
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+`;
+
 const HomePage = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuth();
@@ -50,11 +56,13 @@ const HomePage = () => {
           <StudyBox key={"study" + index} data={data} />
         ))}
       </StudyContainer>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages || 1}
-        onPageChange={setCurrentPage}
-      />
+      <PaginationContainer>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages || 1}
+          onPageChange={setCurrentPage}
+        />
+      </PaginationContainer>
     </>
   );
 };
