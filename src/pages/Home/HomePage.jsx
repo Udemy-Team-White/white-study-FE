@@ -20,6 +20,7 @@ const HeaderBlock = styled.div`
 
 const StudyContainer = styled.div`
   max-width: 1080px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
