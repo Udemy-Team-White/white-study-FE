@@ -19,6 +19,7 @@ import { useCreateStudy } from "../../api/queries/useCreateStudy";
 import { useState } from "react";
 import { useGetCategoryList } from "../../api/queries/useGetCategoryList";
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 const LineBox = styled.div`
   display: grid;
@@ -164,7 +165,7 @@ const StudyRegPage = () => {
       title: "",
       content: "",
       studyType: "ONLINE",
-      maxMember: "",
+      maxMembers: "",
       closedAt: null,
       startDate: null,
       endDate: null,
@@ -179,6 +180,8 @@ const StudyRegPage = () => {
   const { categoryList } = useGetCategoryList();
 
   const isDesktop = useMediaQuery({ minWidth: 767 });
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const filteredData = Object.fromEntries(
@@ -204,6 +207,10 @@ const StudyRegPage = () => {
     if (selectedCategory && !categories.includes(selectedCategory)) {
       setCategories((prev) => [...prev, selectedCategory]);
     }
+  };
+
+  const handleCancle = () => {
+    navigate(-1);
   };
 
   return (
@@ -316,14 +323,14 @@ const StudyRegPage = () => {
           </TitleLabel>
           <Input
             type="number"
-            {...register("maxMember", {
+            {...register("maxMembers", {
               required: "모집 인원은 필수입니다.",
               min: { value: 1, message: "1명 이상 입력해주세요." },
             })}
           />
           <ErrorBox>
             <ErrorMessage>
-              {errors?.maxMember && errors?.maxMember.message}
+              {errors?.maxMembers && errors?.maxMembers.message}
             </ErrorMessage>
           </ErrorBox>
         </TitleColumnBox>
@@ -422,7 +429,9 @@ const StudyRegPage = () => {
 
       <LineBox $grid={isDesktop ? "4fr 2fr 2fr" : "1fr 1fr"}>
         {isDesktop && <div></div>}
-        <CancleButton>취소하기</CancleButton>
+        <CancleButton type="button" onClick={handleCancle}>
+          취소하기
+        </CancleButton>
         <LilacButton type="submit">스터디 개설</LilacButton>
       </LineBox>
     </form>
