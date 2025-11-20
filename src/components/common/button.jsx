@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import {
+  Black,
   Gray1,
   Gray2,
   Gray3,
@@ -16,7 +17,7 @@ import {
   StudyLilac,
   White,
 } from "../../styles/colors";
-import { Body, BodyBold } from "../../styles/fonts";
+import { Body, BodyBold, Caption } from "../../styles/fonts";
 
 export const GrayButtonStyle = css`
   background-color: ${Gray1};
@@ -148,4 +149,28 @@ export const IconButtonStyle = css`
   &:hover {
     color: ${Lilac7};
   }
+`;
+
+export const CornerTagStyle = css`
+  background-color: ${StudyLilac};
+  padding: 8px 16px;
+  ${BodyBold}
+  color: ${White};
+  border-radius: 12px 0 20px 0;
+`;
+
+export const TagBoxStyle = css`
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: wrap;
+`;
+
+export const TagStyle = css`
+  background-color: ${Lilac2};
+  color: ${Black};
+  ${Caption}
+  padding: 4px 8px;
+  border-radius: 4px;
+  word-break: keep-all;
 `;

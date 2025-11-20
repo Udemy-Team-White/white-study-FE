@@ -12,6 +12,12 @@ import {
 } from "../../../styles/colors";
 import { filterStudyType } from "../../../utils/filterStudyType";
 import { formatDate } from "../../../utils/formatDate";
+import { Link } from "react-router-dom";
+import {
+  CornerTagStyle,
+  TagBoxStyle,
+  TagStyle,
+} from "../../../components/common/button";
 
 const ContainerTop = styled.div`
   display: flex;
@@ -22,11 +28,7 @@ const ContainerTop = styled.div`
 `;
 
 const OnlineTag = styled.div`
-  background-color: ${StudyLilac};
-  padding: 8px 16px;
-  ${BodyBold}
-  color: ${White};
-  border-radius: 12px 0 20px 0;
+  ${CornerTagStyle}
   cursor: pointer;
 `;
 
@@ -61,12 +63,9 @@ const Title = styled.div`
 `;
 
 const TagBox = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  ${TagBoxStyle}
   overflow: hidden;
-  gap: 8px;
 
-  width: 100%;
   padding: 12px 20px;
   margin: 12px 0;
   box-sizing: border-box;
@@ -76,15 +75,11 @@ const TagBox = styled.div`
 `;
 
 const Tag = styled.div`
+  ${TagStyle}
   background-color: ${(props) => (props?.match && StudyLilac) || Lilac2};
   color: ${(props) => (props?.match && White) || Black};
-  ${Caption}
-  padding: 4px 8px;
-  border-radius: 4px;
 
   cursor: pointer;
-
-  word-break: keep-all;
 `;
 
 const ContainerBottom = styled.div`
@@ -138,24 +133,34 @@ const Container = styled.div`
   }
 `;
 
+const LinkBox = styled(Link)`
+  color: ${Black};
+
+  &:hover {
+    color: ${Black};
+  }
+`;
+
 const StudyBox = ({ data }) => {
   return (
     <Container>
-      <ContainerTop>
-        <OnlineTag>{filterStudyType(data?.studyType)}</OnlineTag>
-        <Date>{formatDate(data?.createAt)}</Date>
-      </ContainerTop>
-      <Title>{data?.title}</Title>
-      <TagBox>
-        {data?.categories?.map((tagData, index) => (
-          <Tag key={"tag" + index}>{tagData}</Tag>
-        ))}
-      </TagBox>
-      <ContainerBottom>
-        <PersonnelBox>
-          {data?.currentMembers} / {data?.maxMembers}
-        </PersonnelBox>
-      </ContainerBottom>
+      <LinkBox to={`/study/${data.studyId}`}>
+        <ContainerTop>
+          <OnlineTag>{filterStudyType(data?.studyType)}</OnlineTag>
+          <Date>{formatDate(data?.createAt)}</Date>
+        </ContainerTop>
+        <Title>{data?.title}</Title>
+        <TagBox>
+          {data?.categories?.map((tagData, index) => (
+            <Tag key={"tag" + index}>{tagData}</Tag>
+          ))}
+        </TagBox>
+        <ContainerBottom>
+          <PersonnelBox>
+            {data?.currentMembers} / {data?.maxMembers}
+          </PersonnelBox>
+        </ContainerBottom>
+      </LinkBox>
     </Container>
   );
 };
