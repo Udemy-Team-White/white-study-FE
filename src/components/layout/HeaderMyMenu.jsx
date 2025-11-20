@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../api/hooks/useAuth";
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   z-index: 999;
   width: 8rem;
 
   background-color: ${White};
-  top: 60px;
+  top: 50px;
   right: 0;
 
   border: 1px ${Gray3} solid;

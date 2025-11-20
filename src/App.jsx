@@ -10,7 +10,6 @@ import LoginPage from "@/pages/Login/LoginPage";
 import MyPage from "@/pages/My/MyPage";
 import HomePage from "@/pages/Home/HomePage";
 import RegisterPage from "./pages/Register/RegisterPage";
-import HeaderMyMenu from "./components/layout/HeaderMyMenu";
 import { setIsOpen } from "./store/uiSlice";
 import StudyRegPage from "./pages/StudyReg/StudyRegPage";
 import { DatePickerGlobalStyle } from "./components/common/datepicker";
@@ -45,7 +44,6 @@ function App() {
       <BrowserRouter>
         <Header user={user} />
         <HeaderBlock />
-        {isOpen && <HeaderMyMenu />}
 
         <Routes>
           {/* 로그인한 경우 홈으로 */}
@@ -82,7 +80,7 @@ function App() {
           />
 
           {/* 스터디 상세 페이지 */}
-          <Route path="/study/:id" element={<StudyPage />} />
+          <Route path="/study/:studyId" element={<StudyPage />} />
         </Routes>
       </BrowserRouter>
     </div>

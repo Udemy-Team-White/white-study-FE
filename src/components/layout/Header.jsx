@@ -6,8 +6,9 @@ import { useMediaQuery } from "react-responsive";
 import { FaBell, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { IconButtonStyle } from "../common/button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleIsOpen } from "../../store/uiSlice";
+import HeaderMyMenu from "./HeaderMyMenu";
 
 const Container = styled.div`
   position: fixed;
@@ -30,6 +31,7 @@ const HeaderBox = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 1080px;
+  position: relative;
 `;
 
 const HeaderText = styled.div`
@@ -72,6 +74,7 @@ const StyledFaUserIcon = styled(FaUser)`
 
 const Header = ({ user }) => {
   const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.ui.isOpen);
 
   const navigate = useNavigate();
 
@@ -101,6 +104,7 @@ const Header = ({ user }) => {
             />
           </IconBox>
         )}
+        {isOpen && <HeaderMyMenu />}
       </HeaderBox>
     </Container>
   );
