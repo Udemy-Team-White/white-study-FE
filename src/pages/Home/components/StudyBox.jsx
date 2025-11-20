@@ -17,6 +17,8 @@ const ContainerTop = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 12px;
+
+  cursor: pointer;
 `;
 
 const OnlineTag = styled.div`
@@ -25,6 +27,7 @@ const OnlineTag = styled.div`
   ${BodyBold}
   color: ${White};
   border-radius: 12px 0 20px 0;
+  cursor: pointer;
 `;
 
 const Date = styled.div`
@@ -32,6 +35,7 @@ const Date = styled.div`
   margin-right: 20px;
   color: ${Gray7};
   ${Body}
+  cursor: pointer;
 `;
 
 const Title = styled.div`
@@ -47,6 +51,8 @@ const Title = styled.div`
   white-space: normal;
   word-break: keep-all;
   text-align: left;
+
+  cursor: pointer;
 
   @media (min-width: 767px) {
     min-height: 60px;
@@ -65,6 +71,8 @@ const TagBox = styled.div`
   margin: 12px 0;
   box-sizing: border-box;
   max-height: 34px;
+
+  cursor: pointer;
 `;
 
 const Tag = styled.div`
@@ -74,12 +82,15 @@ const Tag = styled.div`
   padding: 4px 8px;
   border-radius: 4px;
 
+  cursor: pointer;
+
   word-break: keep-all;
 `;
 
 const ContainerBottom = styled.div`
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 `;
 
 const PersonnelBox = styled.div`
@@ -88,6 +99,7 @@ const PersonnelBox = styled.div`
   ${BodyBold}
   color: ${White};
   border-radius: 20px 0 12px 0;
+  cursor: pointer;
 `;
 
 const Container = styled.div`
@@ -99,6 +111,8 @@ const Container = styled.div`
   max-width: 100%;
   border-radius: 12px;
   background-color: ${Lilac0};
+
+  cursor: pointer;
 
   transition: background-color 0.3s ease;
 
