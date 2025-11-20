@@ -32,9 +32,10 @@ const HeaderMyMenu = () => {
 
   return (
     <Container>
-      <MenuButton borderTop="none" onClick={() => navigate("/my")}>
-        마이페이지
+      <MenuButton borderTop="none" onClick={() => navigate("/studyreg")}>
+        스터디 개설
       </MenuButton>
+      <MenuButton onClick={() => navigate("/my")}>마이페이지</MenuButton>
       <MenuButton color={Red} onClick={handleLogout}>
         로그아웃
       </MenuButton>

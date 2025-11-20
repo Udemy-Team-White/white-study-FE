@@ -12,6 +12,14 @@ import HomePage from "@/pages/Home/HomePage";
 import RegisterPage from "./pages/Register/RegisterPage";
 import HeaderMyMenu from "./components/layout/HeaderMyMenu";
 import { setIsOpen } from "./store/uiSlice";
+import StudyRegPage from "./pages/StudyReg/StudyRegPage";
+import { DatePickerGlobalStyle } from "./components/common/datepicker";
+import styled from "styled-components";
+import StudyPage from "./pages/Study/StudyPage";
+
+const HeaderBlock = styled.div`
+  height: 63px;
+`;
 
 function App() {
   const dispatch = useDispatch();
@@ -33,8 +41,10 @@ function App() {
         isOpen && dispatch(setIsOpen(false));
       }}
     >
+      <DatePickerGlobalStyle />
       <BrowserRouter>
         <Header user={user} />
+        <HeaderBlock />
         {isOpen && <HeaderMyMenu />}
 
         <Routes>
@@ -62,6 +72,17 @@ function App() {
             path="/my"
             element={isAuthenticated ? <MyPage /> : <Navigate to="/" replace />}
           />
+
+          {/* 스터디 개설 페이지 */}
+          <Route
+            path="/studyreg"
+            element={
+              isAuthenticated ? <StudyRegPage /> : <Navigate to="/" replace />
+            }
+          />
+
+          {/* 스터디 상세 페이지 */}
+          <Route path="/study/:id" element={<StudyPage />} />
         </Routes>
       </BrowserRouter>
     </div>

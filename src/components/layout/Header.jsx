@@ -89,7 +89,11 @@ const Header = ({ user }) => {
         )}
         {user && (
           <IconBox>
-            {isDesktop && <HeaderText>스터디 개설하기</HeaderText>}
+            {isDesktop && (
+              <HeaderText onClick={() => navigate("/studyreg")}>
+                스터디 개설하기
+              </HeaderText>
+            )}
             <StyledFaBellIcon size={28} />
             <StyledFaUserIcon
               size={28}
