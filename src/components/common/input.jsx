@@ -7,6 +7,7 @@ export const InputStyle = css`
   border-radius: 6px;
   outline: none;
   height: 40px;
+  box-sizing: border-box;
 
   &:focus {
     border: 1px ${StudyLilac} solid;

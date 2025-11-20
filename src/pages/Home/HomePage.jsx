@@ -14,10 +14,6 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const HeaderBlock = styled.div`
-  height: 15px;
-`;
-
 const StudyContainer = styled.div`
   max-width: 1080px;
   width: 100%;
@@ -44,22 +40,21 @@ const HomePage = () => {
 
   const [keyword, setKeyword] = useState("");
 
-  const { StudiesData } = useGetStudies({
+  const { studiesData } = useGetStudies({
     page: currentPage - 1,
     size: 8,
     keyword: keyword,
     sortBy: "latest",
   });
 
-  const totalPages = StudiesData?.pageInfo?.totalPages;
+  const totalPages = studiesData?.pageInfo?.totalPages;
 
   return (
     <Container>
-      <HeaderBlock />
       <HomeCarousel />
       <Searchbar setKeyword={setKeyword} setCurrentPage={setCurrentPage} />
       <StudyContainer>
-        {StudiesData?.studies.map((data, index) => (
+        {studiesData?.studies.map((data, index) => (
           <StudyBox key={"study" + index} data={data} />
         ))}
       </StudyContainer>
