@@ -89,16 +89,16 @@ const RegisterPage = () => {
 
   const email = watch("email");
   const password = watch("password");
-  const nickname = watch("nickname");
+  const username = watch("username");
 
-  const { checkEmailMutation, checkNicknameMutation, registerMutation } =
+  const { checkEmailMutation, checkUsernameMutation, registerMutation } =
     useAuth();
 
   const [isEmailChecked, setIsEmailChecked] = useState(false);
   const [emailError, setEmailError] = useState("");
 
-  const [isNicknameChecked, setIsNicknameChecked] = useState(false);
-  const [nicknameError, setNicknameError] = useState("");
+  const [isUsernameChecked, setIsUsernameChecked] = useState(false);
+  const [usernameError, setUsernameError] = useState("");
 
   const handleCheckEmail = async () => {
     const valid = await trigger("email");
@@ -117,20 +117,20 @@ const RegisterPage = () => {
     }
   };
 
-  const handleCheckNickname = async () => {
-    const valid = await trigger("nickname");
+  const handleCheckUsername = async () => {
+    const valid = await trigger("username");
     if (!valid) return;
 
-    setNicknameError("");
+    setUsernameError("");
     try {
-      const res = await checkNicknameMutation.mutateAsync(nickname);
+      const res = await checkUsernameMutation.mutateAsync(username);
       alert(res.message);
-      setIsNicknameChecked(true);
+      setIsUsernameChecked(true);
     } catch (err) {
       const msg =
         err.response?.data?.message || "닉네임 확인 중 오류가 발생했습니다.";
-      setNicknameError(msg);
-      setIsNicknameChecked(false);
+      setUsernameError(msg);
+      setIsUsernameChecked(false);
     }
   };
 
@@ -140,7 +140,7 @@ const RegisterPage = () => {
       return;
     }
 
-    if (!isNicknameChecked) {
+    if (!isUsernameChecked) {
       alert("닉네임 중복 확인을 완료해주세요.");
       return;
     }
@@ -200,7 +200,7 @@ const RegisterPage = () => {
           <LoginLabel>닉네임</LoginLabel>
           <InputBox>
             <LoginInput
-              {...register("nickname", {
+              {...register("username", {
                 required: "닉네임을 입력해주세요.",
                 maxLength: {
                   value: 10,
@@ -208,13 +208,13 @@ const RegisterPage = () => {
                 },
               })}
             />
-            <SubButton type="button" onClick={handleCheckNickname}>
+            <SubButton type="button" onClick={handleCheckUsername}>
               중복확인
             </SubButton>
           </InputBox>
           <ErrorBox>
-            {!errors.nickname && nicknameError && (
-              <ErrorMessage>{nicknameError}</ErrorMessage>
+            {!errors.username && usernameError && (
+              <ErrorMessage>{usernameError}</ErrorMessage>
             )}
           </ErrorBox>
 

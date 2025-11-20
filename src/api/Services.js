@@ -1,3 +1,5 @@
+import api from "./api";
+
 //온보딩 & 공통
 export const getStudies = (params) => {
   return api.get(`/api/studies`, { params });
@@ -10,6 +12,10 @@ export const postStudies = (data) => {
 
 export const getStudiesId = (studyId) => {
   return api.get(`/api/studies/${studyId}`);
+};
+
+export const getCategories = () => {
+  return api.get(`/api/categories`);
 };
 
 // 마이페이지 & 개인 설정

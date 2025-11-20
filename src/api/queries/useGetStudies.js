@@ -8,5 +8,5 @@ export const useGetStudies = (params) => {
     queryKey: ["GETSTUDIES", params],
   });
 
-  return { StudiesData: data?.data, ...rest };
+  return { studiesData: data?.data, ...rest };
 };

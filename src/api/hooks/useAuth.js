@@ -24,7 +24,7 @@ const mockRegister = async (data) => {
 
   return {
     message: "회원가입이 완료되었습니다.",
-    userProfile: { username: data.nickname, points: 0 },
+    userProfile: { username: data.username, points: 0 },
   };
 };
 
@@ -46,11 +46,11 @@ const mockCheckEmail = async (email) => {
   };
 };
 
-const mockCheckNickname = async (nickname) => {
+const mockCheckUsername = async (username) => {
   await new Promise((res) => setTimeout(res, 500));
-  console.log("이메일 중복 확인 요청:", nickname);
+  console.log("이메일 중복 확인 요청:", username);
 
-  if (nickname === "닉네임") {
+  if (username === "닉네임") {
     const error = new Error("이미 존재하는 닉네임입니다.");
     error.code = 409;
     error.response = {
@@ -66,7 +66,7 @@ const mockCheckNickname = async (nickname) => {
 
 const mockLogin = async (data) => {
   await new Promise((res) => setTimeout(res, 1000));
-  if (data.email === "test@test.com" && data.password === "1234") {
+  if (data.email === "test@test.com" && data.password === "1234qwer") {
     return {
       accessToken: "fake-jwt-token-123456",
       userProfile: { username: "테스트 유저", points: 1500 },
@@ -78,32 +78,32 @@ const mockLogin = async (data) => {
 
 // 추후 API 사용 예제
 
-// const realRegister = async (data) => {
-//   const res = await api.post("/auth/register", data);
-//   return res.data;
-// }
+const realRegister = async (data) => {
+  const res = await api.post("/api/auth/register", data);
+  return res.data;
+};
 
-// const checkEmail = async (email) => {
-//   const res = await api.post("/auth/check-email", {email});
-//   return res.data;
-// }
+const checkEmail = async (email) => {
+  const res = await api.post("/api/auth/check-email", { email });
+  return res.data;
+};
 
-// const checkNickname = async (nickname) => {
-//   const res = await api.post("/auth/check-nickname", {nickname});
-//   return res.data;
-// }
+const checkUsername = async (username) => {
+  const res = await api.post("/api/auth/check-username", { username });
+  return res.data;
+};
 
-// const realLogin = async (data) => {
-//   const res = await api.post("/auth/login", data);
-//   return res.data; // { accessToken, user }
-// };
+const realLogin = async (data) => {
+  const res = await api.post("/api/auth/login", data);
+  return res.data; // { accessToken, user }
+};
 
 export const useAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const registerMutation = useMutation({
-    mutationFn: mockRegister,
+    mutationFn: realRegister,
     onSuccess: (res) => {
       navigate("/login");
     },
@@ -114,7 +114,7 @@ export const useAuth = () => {
   });
 
   const checkEmailMutation = useMutation({
-    mutationFn: mockCheckEmail,
+    mutationFn: checkEmail,
     onSuccess: (res) => {
       console.log(res);
     },
@@ -125,25 +125,25 @@ export const useAuth = () => {
     },
   });
 
-  const checkNicknameMutation = useMutation({
-    mutationFn: mockCheckNickname,
+  const checkUsernameMutation = useMutation({
+    mutationFn: checkUsername,
     onSuccess: (res) => {
       console.log(res);
     },
     onError: (err) => {
       alert(
-        err.response?.data?.message || "이메일 확인 중 오류가 발생했습니다.",
+        err.response?.data?.message || "닉네임 확인 중 오류가 발생했습니다.",
       );
     },
   });
 
   const loginMutation = useMutation({
-    mutationFn: mockLogin,
+    mutationFn: realLogin,
     onSuccess: (res) => {
-      localStorage.setItem("accessToken", res.accessToken);
-      localStorage.setItem("user", JSON.stringify(res.user));
+      localStorage.setItem("accessToken", res?.data?.accessToken);
+      localStorage.setItem("user", JSON.stringify(res?.data?.userProfile));
 
-      dispatch(login(res.userProfile));
+      dispatch(login(res?.data?.userProfile));
 
       navigate("/");
     },
@@ -163,7 +163,7 @@ export const useAuth = () => {
 
   return {
     checkEmailMutation,
-    checkNicknameMutation,
+    checkUsernameMutation,
     registerMutation,
     loginMutation,
     handleLogout,

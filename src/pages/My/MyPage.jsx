@@ -15,13 +15,13 @@ const MyPageBox = styled.div`
 `;
 
 const MyPage = () => {
-  const { MyPageData } = useGetMyPage();
+  const { myPageData } = useGetMyPage();
 
   return (
     <MyPageBox>
-      <ProfileComp data={MyPageData?.profileInfo} />
+      <ProfileComp data={myPageData?.profileInfo} />
 
-      <ScoreComp data={MyPageData?.activitySummary} />
+      <ScoreComp data={myPageData?.activitySummary} />
 
       <ShortcutComp />
 
