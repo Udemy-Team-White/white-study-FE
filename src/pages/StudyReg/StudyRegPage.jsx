@@ -163,7 +163,7 @@ const StudyRegPage = () => {
     defaultValues: {
       title: "",
       content: "",
-      studyType: "ONLINE", // 기본값
+      studyType: "ONLINE",
       maxMember: "",
       closedAt: null,
       startDate: null,
@@ -217,31 +217,27 @@ const StudyRegPage = () => {
           <div>
             <StudyTypeInput
               type="radio"
-              name="studytype"
               value="ONLINE"
               id="online"
-              checked
-              {...register("studyTpye")}
+              {...register("studyType")}
             />
             <label htmlFor="online"> 온라인</label>
           </div>
           <div>
             <StudyTypeInput
               type="radio"
-              name="studytype"
               value="OFFLINE"
               id="offline"
-              {...register("studyTpye")}
+              {...register("studyType")}
             />
             <label htmlFor="offline"> 오프라인</label>
           </div>
           <div>
             <StudyTypeInput
               type="radio"
-              name="studytype"
               value="MIXED"
               id="mixed"
-              {...register("studyTpye")}
+              {...register("studyType")}
             />
             <label htmlFor="mixed"> 온·오프라인</label>
           </div>
