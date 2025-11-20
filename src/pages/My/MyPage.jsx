@@ -11,7 +11,7 @@ const MyPageBox = styled.div`
   gap: 52px;
   max-width: 1080px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 52px;
 `;
 
 const MyPage = () => {
