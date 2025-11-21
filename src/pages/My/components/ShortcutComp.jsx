@@ -3,6 +3,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import styled from "styled-components";
 import { Gray7, Lilac0, Lilac7 } from "../../../styles/colors";
 import { Caption, Heading5Bold } from "../../../styles/fonts";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -62,12 +63,14 @@ const ShortcutCaption = styled.a`
 `;
 
 const ShortcutComp = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <ShortcutTitle>바로가기</ShortcutTitle>
 
       <ShortcutBox>
-        <Shortcut>
+        <Shortcut onClick={() => navigate(`/my/study`)}>
           <FaBookOpen size={60} color={Lilac7} />
           <ShortcutTextBox>
             <ShortcutText>나의 스터디</ShortcutText>
