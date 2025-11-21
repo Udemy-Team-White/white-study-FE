@@ -175,7 +175,11 @@ const StudyRegPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
 
-  const { mutate: createStudy, isLoading } = useCreateStudy();
+  const { mutate: createStudy, isLoading } = useCreateStudy({
+    onSuccess: () => {
+      navigate("/");
+    },
+  });
 
   const { categoryList } = useGetCategoryList();
 
@@ -198,8 +202,6 @@ const StudyRegPage = () => {
     };
 
     createStudy(payload);
-
-    navigate("/");
   };
 
   const handleAddCategory = () => {
@@ -323,9 +325,10 @@ const StudyRegPage = () => {
           </TitleLabel>
           <Input
             type="number"
+            min={2}
             {...register("maxMembers", {
               required: "모집 인원은 필수입니다.",
-              min: { value: 1, message: "1명 이상 입력해주세요." },
+              min: { value: 2, message: "2명 이상 입력해주세요." },
             })}
           />
           <ErrorBox>
