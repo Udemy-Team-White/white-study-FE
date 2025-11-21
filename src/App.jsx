@@ -15,7 +15,7 @@ import StudyRegPage from "./pages/StudyReg/StudyRegPage";
 import { DatePickerGlobalStyle } from "./components/common/datepicker";
 import styled from "styled-components";
 import StudyPage from "./pages/Study/StudyPage";
-import MyStudyPage from "./pages/MyStudy/MyStudyPage";
+import MyStudiesPage from "./pages/MyStudies/MyStudiesPage";
 
 const HeaderBlock = styled.div`
   height: 63px;
@@ -76,7 +76,7 @@ function App() {
           <Route
             path="/my/study"
             element={
-              isAuthenticated ? <MyStudyPage /> : <Navigate to="/" replace />
+              isAuthenticated ? <MyStudiesPage /> : <Navigate to="/" replace />
             }
           />
 
