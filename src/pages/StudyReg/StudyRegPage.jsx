@@ -175,11 +175,7 @@ const StudyRegPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
 
-  const { mutate: createStudy, isLoading } = useCreateStudy({
-    onSuccess: () => {
-      navigate("/");
-    },
-  });
+  const { mutate: createStudy, isLoading } = useCreateStudy();
 
   const { categoryList } = useGetCategoryList();
 
