@@ -26,3 +26,7 @@ export const postApplyStudy = ({ studyId, message }) => {
 export const getMyPage = () => {
   return api.get(`/api/users/me/mypage-data`);
 };
+
+export const getMyStudies = (params) => {
+  return api.get(`/api/users/me/studies`, { params });
+};
