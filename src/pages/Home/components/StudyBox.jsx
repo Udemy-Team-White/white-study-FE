@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Body, BodyBold, Caption, Heading5Bold } from "../../../styles/fonts";
+import { Body, BodyBold, Heading5Bold } from "../../../styles/fonts";
 import {
   Black,
   Gray7,
