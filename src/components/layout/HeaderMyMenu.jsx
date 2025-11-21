@@ -22,8 +22,8 @@ const Container = styled.div`
 const MenuButton = styled.button`
   ${MenuButtonStyle}
   width: 100%;
-  border-top: ${(props) => props?.borderTop};
-  color: ${(props) => props?.color};
+  border-top: ${(props) => props?.$borderTop};
+  color: ${(props) => props?.$color};
 `;
 
 const HeaderMyMenu = () => {
@@ -32,11 +32,11 @@ const HeaderMyMenu = () => {
 
   return (
     <Container>
-      <MenuButton borderTop="none" onClick={() => navigate("/studyreg")}>
+      <MenuButton $borderTop="none" onClick={() => navigate("/studyreg")}>
         스터디 개설
       </MenuButton>
       <MenuButton onClick={() => navigate("/my")}>마이페이지</MenuButton>
-      <MenuButton color={Red} onClick={handleLogout}>
+      <MenuButton $color={Red} onClick={handleLogout}>
         로그아웃
       </MenuButton>
     </Container>
