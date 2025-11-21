@@ -325,7 +325,7 @@ const StudyRegPage = () => {
           </TitleLabel>
           <Input
             type="number"
-            min={2}
+            min={1}
             {...register("maxMembers", {
               required: "모집 인원은 필수입니다.",
               min: { value: 2, message: "2명 이상 입력해주세요." },
