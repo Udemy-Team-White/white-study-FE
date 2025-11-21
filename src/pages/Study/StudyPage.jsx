@@ -264,7 +264,7 @@ const StudyPage = () => {
 
         <BottomBox $grid={isDesktop ? "3fr 1fr" : "1fr"}>
           {isDesktop && <div />}
-          <ButtonType />
+          <ButtonType userType={studyData?.userStatus} />
         </BottomBox>
       </Container>
     </>
