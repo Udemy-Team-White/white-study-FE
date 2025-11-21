@@ -43,8 +43,9 @@ const HomePage = () => {
   const { studiesData } = useGetStudies({
     page: currentPage - 1,
     size: 8,
-    keyword: keyword,
     sortBy: "latest",
+    keyword: keyword,
+    category: "",
   });
 
   const totalPages = studiesData?.pageInfo?.totalPages;

@@ -147,7 +147,7 @@ const StudyBox = ({ data }) => {
       <LinkBox to={`/study/${data.studyId}`}>
         <ContainerTop>
           <OnlineTag>{filterStudyType(data?.studyType)}</OnlineTag>
-          <Date>{formatDate(data?.createAt)}</Date>
+          <Date>{formatDate(data?.createdAt)}</Date>
         </ContainerTop>
         <Title>{data?.title}</Title>
         <TagBox>
