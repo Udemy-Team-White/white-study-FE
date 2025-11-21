@@ -4,9 +4,9 @@ import { getStudiesMock } from "../mock/getStudiesMock";
 
 export const useGetStudies = (params) => {
   const { data, ...rest } = useQuery({
-    queryFn: () => getStudiesMock(params),
+    queryFn: () => getStudies(params),
     queryKey: ["GETSTUDIES", params],
   });
 
-  return { studiesData: data?.data, ...rest };
+  return { studiesData: data?.data?.data, ...rest };
 };
