@@ -199,7 +199,7 @@ const StudyRegPage = () => {
 
     createStudy(payload);
 
-    console.log(payload);
+    navigate("/");
   };
 
   const handleAddCategory = () => {
@@ -447,6 +447,7 @@ const EditorMenuBar = ({ editor }) => {
   return (
     <Toolbar>
       <ToolButton
+        type="button"
         onClick={() => editor.chain().focus().toggleBold().run()}
         active={editor.isActive("bold")}
         title="Bold (Ctrl+B)"
@@ -455,6 +456,7 @@ const EditorMenuBar = ({ editor }) => {
       </ToolButton>
 
       <ToolButton
+        type="button"
         onClick={() => editor.chain().focus().toggleItalic().run()}
         active={editor.isActive("italic")}
         title="Italic (Ctrl+I)"
@@ -463,6 +465,7 @@ const EditorMenuBar = ({ editor }) => {
       </ToolButton>
 
       <ToolButton
+        type="button"
         onClick={() => editor.chain().focus().toggleUnderline().run()}
         active={editor.isActive("underline")}
         title="Underline (Ctrl+U)"
@@ -471,6 +474,7 @@ const EditorMenuBar = ({ editor }) => {
       </ToolButton>
 
       <ToolButton
+        type="button"
         onClick={() => editor.chain().focus().toggleStrike().run()}
         active={editor.isActive("strike")}
         title="Strike"
@@ -480,6 +484,7 @@ const EditorMenuBar = ({ editor }) => {
 
       {headingLevels.map((level) => (
         <ToolButton
+          type="button"
           key={level}
           onClick={() => editor.chain().focus().toggleHeading({ level }).run()}
           active={editor.isActive("heading", { level })}
