@@ -8,5 +8,5 @@ export const useGetMyPage = () => {
     queryKey: ["GETMYPAGE"],
   });
 
-  return { myPageData: data?.data, ...rest };
+  return { myPageData: data?.data?.data, ...rest };
 };
