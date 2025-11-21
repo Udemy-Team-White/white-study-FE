@@ -62,6 +62,8 @@ const MemberText = styled.div`
   ${Body}
   margin: 0 20px;
   margin-top: 8px;
+
+  cursor: pointer;
 `;
 
 const TagBox = styled.div`
@@ -146,7 +148,7 @@ const LinkBox = styled(Link)`
 const MyStudiesBox = ({ data }) => {
   return (
     <Container>
-      <LinkBox to={`/`}>
+      <LinkBox to={`/my/study/${data?.studyId}`}>
         <ContainerTop>
           <OnlineTag>{data?.studyStatus}</OnlineTag>
         </ContainerTop>
