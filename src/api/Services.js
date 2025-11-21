@@ -10,12 +10,16 @@ export const postStudies = (data) => {
   return api.post(`/api/studies`, data);
 };
 
-export const getStudiesId = (studyId) => {
+export const getStudyId = (studyId) => {
   return api.get(`/api/studies/${studyId}`);
 };
 
 export const getCategories = () => {
   return api.get(`/api/categories`);
+};
+
+export const postApplyStudy = ({ studyId, message }) => {
+  return api.post(`/api/studies/${studyId}/apply`, message);
 };
 
 // 마이페이지 & 개인 설정
