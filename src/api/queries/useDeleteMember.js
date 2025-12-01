@@ -1,19 +1,17 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { patchTodoStatus } from "../Services";
+import { deleteMember } from "../Services";
 
-export const usePatchTodoStatus = () => {
+export const useDeleteMember = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: ({ itemId, isCompleted }) =>
-      patchTodoStatus(itemId, isCompleted),
+    mutationFn: deleteMember,
     onSuccess: () => {
-      queryClient.invalidateQueries(["GETTODOLIST"]);
       queryClient.invalidateQueries(["GETDASHBOARD"]); // 생성 후 목록 갱신
-      alert("투두 완료!");
+      alert("멤버 강퇴 완료");
     },
     onError: (err) => {
-      alert(err.response?.data?.message || "투두 완료 실패");
+      alert(err.response?.data?.message || "멤버 강퇴 실패");
       console.log(err);
     },
   });

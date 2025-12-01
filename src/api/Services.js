@@ -32,11 +32,15 @@ export const getMyStudies = (params) => {
 };
 
 // 스터디 활동 (멤버)
-export const getTodoList = (studyId, date) => {
-  return api.get(`/api/studies/${studyId}/todos`, { date });
+export const getDashboard = (studyId) => {
+  return api.get(`/api/studies/${studyId}/dashboard`);
 };
 
-export const postTodoItem = (listId, content) => {
+export const getTodoList = (studyId, date) => {
+  return api.get(`/api/studies/${studyId}/todos`, { params: { date } });
+};
+
+export const postTodoItem = ({ listId, content }) => {
   return api.post(`/api/todo-lists/${listId}/items`, { content });
 };
 
@@ -58,8 +62,8 @@ export const getReports = (studyId) => {
   return api.get(`/api/studies/${studyId}/reports`);
 };
 
-export const postCreateReport = (studyId, params) => {
-  return api.post(`/api/studies/${studyId}/reports`, { params });
+export const postCreateReport = ({ studyId, data }) => {
+  return api.post(`/api/studies/${studyId}/reports`, data);
 };
 
 export const getReport = (reportId) => {
@@ -72,4 +76,23 @@ export const postEditReport = (reportId, params) => {
 
 export const deleteReport = (reportId) => {
   return api.delete(`/api/reports/${reportId}`);
+};
+
+// 스터디 관리 (스터디장)
+export const getApplicants = (studyId) => {
+  return api.get(`/api/studies/${studyId}/applicants`);
+};
+
+export const postApplicantsApprove = ({ studyId, applicationId }) => {
+  return api.post(
+    `/api/studies/${studyId}/applicants/${applicationId}/approve`,
+  );
+};
+
+export const postApplicantsReject = ({ studyId, applicationId }) => {
+  return api.post(`/api/studies/${studyId}/applicants/${applicationId}/reject`);
+};
+
+export const deleteMember = ({ studyId, memberId }) => {
+  return api.delete(`/api/studies/${studyId}/members/${memberId}`);
 };
