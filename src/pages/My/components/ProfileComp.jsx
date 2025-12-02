@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Gray4 } from "../../../styles/colors";
 import { Body, Heading4Bold } from "../../../styles/fonts";
 import { BiSolidEdit } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputStyle } from "../../../components/common/input";
 import {
   GrayButtonStyle,
@@ -11,6 +11,7 @@ import {
 } from "../../../components/common/button";
 import { useForm } from "react-hook-form";
 import { useMediaQuery } from "react-responsive";
+import { usePatchMyInfo } from "../../../api/queries/usePatchMyInfo";
 
 const ProfileBox = styled.div`
   margin: 0 24px;
@@ -137,7 +138,10 @@ const ProfileComp = ({ data }) => {
     defaultValues: { username: data?.username || "", bio: data?.bio || "" },
   });
 
+  const { mutate } = usePatchMyInfo();
+
   const onSubmit = (formData) => {
+    mutate(formData);
     console.log("수정된 데이터: ", formData);
     // 서버 전송 로직
     setIsEditable(false);
@@ -150,6 +154,12 @@ const ProfileComp = ({ data }) => {
     });
     setIsEditable(false);
   };
+
+  useEffect(() => {
+    if (data) {
+      reset({ username: data.username, bio: data.bio });
+    }
+  }, [data]);
 
   return (
     <>
