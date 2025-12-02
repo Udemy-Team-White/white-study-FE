@@ -53,7 +53,7 @@ const MyStudiesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { myStudiesData } = useGetMyStudies({
-    status: "IN_PROGRESS",
+    status: "ALL",
     page: currentPage - 1,
     size: 8,
   });
