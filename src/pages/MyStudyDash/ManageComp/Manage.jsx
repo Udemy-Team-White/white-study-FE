@@ -23,6 +23,12 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const TitleLabel = styled.div`
+  ${Heading5Bold}
+  margin-top: 28px;
+  width: 100%;
+`;
+
 const ApplicantBox = styled.div`
   width: 100%;
   background-color: ${White};
@@ -104,6 +110,8 @@ const Manage = ({ studyId }) => {
       <StudyEditButton onClick={onClickEdit}>
         스터디 상세 정보 수정하러 가기
       </StudyEditButton>
+      <TitleLabel>신청자 목록</TitleLabel>
+      {applicantsList?.length === 0 && <div>신청자가 없습니다</div>}
       {applicantsList?.map((applicant) => (
         <ApplicantBox>
           <ProfileBox>
