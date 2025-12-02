@@ -2,6 +2,7 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import styled from "styled-components";
 import { Gray3, White } from "../../styles/colors";
+import { useEffect } from "react";
 
 const EditorWrapper = styled.div`
   background-color: ${White};
@@ -52,6 +53,17 @@ const TextEditor = ({ value, onChange }) => {
       onChange(editor.getHTML());
     },
   });
+
+  useEffect(() => {
+    if (!editor) return;
+
+    const current = editor.getHTML();
+
+    // 내용이 다를 때만 업데이트 (무한루프 방지)
+    if (value !== current) {
+      editor.commands.setContent(value || "", false);
+    }
+  }, [value, editor]);
 
   return (
     <EditorWrapper>
