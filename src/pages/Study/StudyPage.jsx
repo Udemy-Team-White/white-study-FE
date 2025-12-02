@@ -183,7 +183,7 @@ const StudyPage = () => {
   const endDate = studyData?.studyInfo?.endDate;
 
   const onSubmit = (message) => {
-    applyStudy(studyId, message);
+    applyStudy({ studyId, message });
     dispatch(setIsModalOpen(false));
   };
 

@@ -150,10 +150,10 @@ const MyStudiesBox = ({ data }) => {
     <Container>
       <LinkBox to={`/my/study/${data?.studyId}`}>
         <ContainerTop>
-          <OnlineTag>{data?.studyStatus}</OnlineTag>
+          <OnlineTag>{data?.status}</OnlineTag>
         </ContainerTop>
         <Title>
-          {data?.title ? data?.title : "정해진 스터디 명이 없습니다."}
+          {data?.studyName ? data?.studyName : "정해진 스터디 명이 없습니다."}
         </Title>
         <MemberText>{filterUserStudyType(data?.myRole)}로 참여중</MemberText>
         <TagBox>
