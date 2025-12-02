@@ -169,7 +169,15 @@ const ProfileComp = ({ data }) => {
             <ProfileImg src={data?.imgUlr} />
             <ProfileBioBox>
               <ProfileNicknameBox>
-                <NameInput {...register("username")} />
+                <NameInput
+                  {...register("username", {
+                    maxLength: {
+                      value: 10,
+                      message: "닉네임은 10자 이내로 입력해주세요.",
+                    },
+                  })}
+                  maxLength={10}
+                />
                 {isDesktop && (
                   <BioEditButtonBox>
                     <CancleButton onClick={handleCancel}>취소</CancleButton>
@@ -177,7 +185,15 @@ const ProfileComp = ({ data }) => {
                   </BioEditButtonBox>
                 )}
               </ProfileNicknameBox>
-              <BioTextarea {...register("bio")} />
+              <BioTextarea
+                {...register("bio", {
+                  maxLength: {
+                    value: 500,
+                    message: "소개글은 500자 이내로 입력해주세요.",
+                  },
+                })}
+                maxLength={500}
+              />
               {!isDesktop && (
                 <BioEditButtonBox>
                   <CancleButton onClick={handleCancel}>취소</CancleButton>
