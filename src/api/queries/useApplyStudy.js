@@ -6,7 +6,7 @@ export const useApplyStudy = () => {
 
   const mutation = useMutation({
     mutationFn: postApplyStudy,
-    onSuccess: () => {
+    onSuccess: (data, { studyId }) => {
       queryClient.invalidateQueries(["GETSTUDY", studyId]); // 생성 후 목록 갱신
       alert("스터디 신청 완료!");
     },
