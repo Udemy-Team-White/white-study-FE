@@ -17,6 +17,7 @@ import styled from "styled-components";
 import StudyPage from "./pages/Study/StudyPage";
 import MyStudiesPage from "./pages/MyStudies/MyStudiesPage";
 import MyStudyDashPage from "./pages/MyStudyDash/MyStudyDashPage";
+import StudyEditPage from "./pages/StudyEdit/StudyEditPage";
 
 const HeaderBlock = styled.div`
   height: 63px;
@@ -103,6 +104,9 @@ function App() {
 
           {/* 스터디 상세 페이지 */}
           <Route path="/study/:studyId" element={<StudyPage />} />
+
+          {/* 스터디 수정 페이지 */}
+          <Route path="/study/edit/:studyId" element={<StudyEditPage />} />
         </Routes>
       </BrowserRouter>
     </div>
