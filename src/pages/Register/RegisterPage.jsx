@@ -12,7 +12,7 @@ import {
 } from "../../components/common/input";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../api/hooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LoginBackground = styled.div`
   background-color: ${Lilac1};
@@ -81,7 +81,6 @@ const RegisterPage = () => {
   const {
     register,
     handleSubmit,
-    reset,
     trigger,
     watch,
     formState: { errors },
@@ -90,6 +89,16 @@ const RegisterPage = () => {
   const email = watch("email");
   const password = watch("password");
   const username = watch("username");
+
+  useEffect(() => {
+    setIsEmailChecked(false);
+    setEmailError("");
+  }, [email]);
+
+  useEffect(() => {
+    setIsUsernameChecked(false);
+    setUsernameError("");
+  }, [username]);
 
   const { checkEmailMutation, checkUsernameMutation, registerMutation } =
     useAuth();
@@ -156,7 +165,17 @@ const RegisterPage = () => {
           <LoginLabel>이메일</LoginLabel>
           <InputBox>
             <LoginInput
-              {...register("email", { required: "이메일을 입력해주세요." })}
+              {...register("email", {
+                required: "이메일을 입력해주세요.",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "유효한 이메일 주소를 입력해주세요.",
+                },
+                maxLength: {
+                  value: 200,
+                  message: "200자 이내의 이메일을 사용해주세요.",
+                },
+              })}
             />
             <SubButton type="button" onClick={handleCheckEmail}>
               중복확인
@@ -174,7 +193,17 @@ const RegisterPage = () => {
           <LoginLabel>비밀번호</LoginLabel>
           <LoginInput
             type="password"
-            {...register("password", { required: "비밀번호를 입력해주세요." })}
+            {...register("password", {
+              required: "비밀번호를 입력해주세요.",
+              minLength: {
+                value: 8,
+                message: "비밀번호는 8자 이상이어야 합니다.",
+              },
+              maxLength: {
+                value: 20,
+                message: "비밀번호는 20자 이하이어야 합니다.",
+              },
+            })}
           />
           <ErrorBox>
             {errors.password && (
