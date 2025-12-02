@@ -37,7 +37,7 @@ const ScoreComp = ({ data }) => {
       </PraiseBox>
       <PercentageComp
         title={`나의 
-신뢰 점수`}
+신뢰도`}
         number={data?.reliabilityScore}
         unit={`점`}
       />
