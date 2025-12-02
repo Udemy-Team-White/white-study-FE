@@ -215,7 +215,11 @@ const StudyRegPage = () => {
       <LineBox $grid={isDesktop ? "1fr 1fr" : "repeat(1, 2fr)"}>
         <TitleColumnBox>
           <TitleLabel>스터디 이름</TitleLabel>
-          <Input {...register("studyName")} />
+          <Input
+            {...register("studyName", {
+              maxLength: { value: 50, message: "50자 이하로 입력해주세요." },
+            })}
+          />
         </TitleColumnBox>
         <StudyTypeBox $justify={isDesktop ? "flex-end" : "space-between"}>
           <div>
@@ -258,7 +262,13 @@ const StudyRegPage = () => {
           </TitleLabel>
           <FlexBox>
             <Input
-              {...register("title", { required: "모집글 제목은 필수입니다." })}
+              {...register("title", {
+                required: "모집글 제목은 필수입니다.",
+                maxLength: {
+                  value: 100,
+                  message: "100자 이하로 입력해주세요.",
+                },
+              })}
             />
           </FlexBox>
         </TitleRowBox>
@@ -338,6 +348,15 @@ const StudyRegPage = () => {
           <Controller
             control={control}
             name="startDate"
+            rules={{
+              validate: (value) => {
+                const end = getValues("endDate");
+                if (value && end && value > end) {
+                  return "시작일은 종료일보다 빠르거나 같아야 합니다.";
+                }
+                return true;
+              },
+            }}
             render={({ field }) => (
               <StyledDatePickerWrapper>
                 <DatePicker
@@ -364,6 +383,15 @@ const StudyRegPage = () => {
           <Controller
             control={control}
             name="endDate"
+            rules={{
+              validate: (value) => {
+                const start = getValues("startDate");
+                if (value && start && value < start) {
+                  return "종료일은 시작일보다 빠를 수 없습니다.";
+                }
+                return true;
+              },
+            }}
             render={({ field }) => (
               <StyledDatePickerWrapper>
                 <DatePicker
