@@ -7,7 +7,6 @@ import {
   Heading5,
   Heading5Bold,
 } from "../../../styles/fonts";
-import { useGetDashboard } from "../../../api/queries/useGetDashboard";
 import { TagStyle } from "../../../components/common/button";
 import { PiListBullets, PiListChecks } from "react-icons/pi";
 import { formatDate } from "../../../utils/formatDate";
@@ -171,7 +170,7 @@ const Dashboard = ({ studyId, dashboardData }) => {
   return (
     <Container>
       <StudyTitle>
-        {dashboardData?.studyInfo?.studyName}
+        {dashboardData?.studyInfo?.studyName || "정해진 스터디 명이 없습니다."}
         <StudyTag>{dashboardData?.studyInfo?.status}</StudyTag>
       </StudyTitle>
       <StudyDate>
