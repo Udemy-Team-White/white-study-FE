@@ -104,3 +104,7 @@ export const postApplicantsReject = ({ studyId, applicationId }) => {
 export const deleteMember = ({ studyId, memberId }) => {
   return api.delete(`/api/studies/${studyId}/members/${memberId}`);
 };
+
+export const postStudyId = ({ studyId, payload }) => {
+  return api.post(`/api/studies/${studyId}`, payload);
+};
