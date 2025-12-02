@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { Lilac0, StudyLilac, White } from "../../../styles/colors";
 import { useGetApplicants } from "../../../api/queries/useGetApplicants";
-import { Heading5Bold } from "../../../styles/fonts";
+import { Heading4Bold, Heading5Bold } from "../../../styles/fonts";
 import {
   GrayButtonStyle,
   LilacButtonStyle,
 } from "../../../components/common/button";
 import { useApplicantsApprove } from "../../../api/queries/useApplicantsApprove";
 import { useApplicantsReject } from "../../../api/queries/useApplicantsReject";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   background-color: ${Lilac0};
@@ -71,11 +72,24 @@ const ApproveButton = styled.button`
   flex: 1;
 `;
 
+const StudyEditButton = styled.button`
+  ${LilacButtonStyle}
+  height: 100px;
+  width: 100%;
+  border-radius: 12px;
+  ${Heading4Bold}
+`;
+
 const Manage = ({ studyId }) => {
   const { applicantsList } = useGetApplicants(studyId);
+  const navigate = useNavigate();
 
   const { mutate: approveMutate } = useApplicantsApprove();
   const { mutate: rejectMutate } = useApplicantsReject();
+
+  const onClickEdit = () => {
+    navigate(`/study/edit/${studyId}`);
+  };
 
   const onClickApprove = (applicationId) => {
     approveMutate({ studyId, applicationId });
@@ -87,6 +101,9 @@ const Manage = ({ studyId }) => {
 
   return (
     <Container>
+      <StudyEditButton onClick={onClickEdit}>
+        스터디 상세 정보 수정하러 가기
+      </StudyEditButton>
       {applicantsList?.map((applicant) => (
         <ApplicantBox>
           <ProfileBox>
