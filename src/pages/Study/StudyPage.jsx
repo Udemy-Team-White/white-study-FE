@@ -274,17 +274,23 @@ const StudyPage = () => {
 export default StudyPage;
 
 const ButtonType = ({ userType }) => {
+  const { studyId } = useParams();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLeader = () => {};
-  const handleMember = () => {};
+  const handleLeader = () => {
+    navigate(`/study/edit/${studyId}`);
+  };
+  const handleMember = () => {
+    navigate(`/my/study/${studyId}`);
+  };
   const handleNone = () => {
     dispatch(toggleIsModalOpen());
   };
   const handleGuest = () => {
-    // navigate("/login");
-    dispatch(toggleIsModalOpen());
+    navigate("/login");
+    // dispatch(toggleIsModalOpen());
   };
 
   if (userType === "LEADER")
