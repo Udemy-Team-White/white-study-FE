@@ -16,6 +16,7 @@ import { DatePickerGlobalStyle } from "./components/common/datepicker";
 import styled from "styled-components";
 import StudyPage from "./pages/Study/StudyPage";
 import MyStudiesPage from "./pages/MyStudies/MyStudiesPage";
+import MyStudyDashPage from "./pages/MyStudyDash/MyStudyDashPage";
 
 const HeaderBlock = styled.div`
   height: 63px;
@@ -77,6 +78,18 @@ function App() {
             path="/my/study"
             element={
               isAuthenticated ? <MyStudiesPage /> : <Navigate to="/" replace />
+            }
+          />
+
+          {/* 나의 스터디 - 대시보드 페이지 */}
+          <Route
+            path="/my/study/:studyId"
+            element={
+              isAuthenticated ? (
+                <MyStudyDashPage />
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
 
