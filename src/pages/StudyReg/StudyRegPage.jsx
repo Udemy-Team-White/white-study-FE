@@ -13,13 +13,12 @@ import {
   GrayButtonStyle,
   LilacButtonStyle,
 } from "../../components/common/button";
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
 import { useCreateStudy } from "../../api/queries/useCreateStudy";
 import { useState } from "react";
 import { useGetCategoryList } from "../../api/queries/useGetCategoryList";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
+import TextEditor from "../../components/common/TextEditor";
 
 const LineBox = styled.div`
   display: grid;
@@ -276,7 +275,7 @@ const StudyRegPage = () => {
           control={control}
           rules={{ required: "내용은 필수입니다." }}
           render={({ field }) => (
-            <RichTextEditor value={field.value} onChange={field.onChange} />
+            <TextEditor value={field.value} onChange={field.onChange} />
           )}
         />
       </LineBox>
@@ -438,117 +437,3 @@ const StudyRegPage = () => {
 };
 
 export default StudyRegPage;
-
-const EditorMenuBar = ({ editor }) => {
-  if (!editor) return null;
-  const headingLevels = [1, 2, 3, 4, 5, 6];
-
-  return (
-    <Toolbar>
-      <ToolButton
-        type="button"
-        onClick={() => editor.chain().focus().toggleBold().run()}
-        active={editor.isActive("bold")}
-        title="Bold (Ctrl+B)"
-      >
-        <b>B</b>
-      </ToolButton>
-
-      <ToolButton
-        type="button"
-        onClick={() => editor.chain().focus().toggleItalic().run()}
-        active={editor.isActive("italic")}
-        title="Italic (Ctrl+I)"
-      >
-        <i>I</i>
-      </ToolButton>
-
-      <ToolButton
-        type="button"
-        onClick={() => editor.chain().focus().toggleUnderline().run()}
-        active={editor.isActive("underline")}
-        title="Underline (Ctrl+U)"
-      >
-        <u>U</u>
-      </ToolButton>
-
-      <ToolButton
-        type="button"
-        onClick={() => editor.chain().focus().toggleStrike().run()}
-        active={editor.isActive("strike")}
-        title="Strike"
-      >
-        <s>S</s>
-      </ToolButton>
-
-      {headingLevels.map((level) => (
-        <ToolButton
-          type="button"
-          key={level}
-          onClick={() => editor.chain().focus().toggleHeading({ level }).run()}
-          active={editor.isActive("heading", { level })}
-          title={`Heading ${level}`}
-        >
-          <b>H{level}</b>
-        </ToolButton>
-      ))}
-    </Toolbar>
-  );
-};
-
-const RichTextEditor = ({ value, onChange }) => {
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: value,
-    onUpdate({ editor }) {
-      onChange(editor.getHTML());
-    },
-  });
-
-  return (
-    <EditorWrapper>
-      <EditorMenuBar editor={editor} />
-      <EditorContent editor={editor} />
-    </EditorWrapper>
-  );
-};
-
-const EditorWrapper = styled.div`
-  border: 1px solid ${Gray3};
-  border-radius: 6px;
-
-  .tiptap {
-    min-height: 200px;
-    padding: 12px;
-    outline: none;
-  }
-`;
-
-const Toolbar = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding: 4px 10px;
-  border-bottom: 1px solid ${Gray3};
-`;
-
-const ToolButton = styled.button`
-  min-width: 20px;
-  background: transparent;
-  border: none;
-  padding: 4px 6px;
-  cursor: pointer;
-  color: ${(props) => (props.active ? "#4f46e5" : "#333")};
-  font-weight: ${(props) => (props.active ? "bold" : "normal")};
-  border-radius: 4px;
-  transition: background 0.2s;
-
-  &:hover {
-    background: #f0f0f0;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-`;
