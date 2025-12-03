@@ -35,6 +35,17 @@ export const getMyStudies = (params) => {
   return api.get(`/api/users/me/studies`, { params });
 };
 
+export const postProfileImg = (file) => {
+  const formData = new FormData();
+  formData.append("image", file); // 서버에서 요구하는 필드명에 맞춰야 함
+
+  return api.post("/api/users/me/profile-image", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
 // 스터디 활동 (멤버)
 export const getDashboard = (studyId) => {
   return api.get(`/api/studies/${studyId}/dashboard`);

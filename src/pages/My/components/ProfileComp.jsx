@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Gray4 } from "../../../styles/colors";
+import { Gray4, StudyLilac } from "../../../styles/colors";
 import { Body, Heading4Bold } from "../../../styles/fonts";
 import { BiSolidEdit } from "react-icons/bi";
 import { useEffect, useState } from "react";
@@ -12,6 +12,8 @@ import {
 import { useForm } from "react-hook-form";
 import { useMediaQuery } from "react-responsive";
 import { usePatchMyInfo } from "../../../api/queries/usePatchMyInfo";
+import { usePostProfileImg } from "../../../api/queries/usePostProfileImg";
+import { IoIosCamera } from "react-icons/io";
 
 const ProfileBox = styled.div`
   margin: 0 24px;
@@ -24,6 +26,52 @@ const ProfileBox = styled.div`
     flex-direction: row;
     align-items: stretch;
     gap: 1.75rem;
+  }
+`;
+
+const ProfileImgWrapper = styled.div`
+  position: relative;
+  border: 4px solid ${StudyLilac};
+  border-radius: 12px;
+  height: 7.5rem;
+  width: 7.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  @media (min-width: 767px) {
+    height: 10rem;
+    width: 10rem;
+  }
+`;
+
+const ProfileImgInput = styled.input`
+  display: none;
+`;
+
+const ProfileEditImg = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+`;
+
+const CameraBox = styled.div`
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: ${StudyLilac};
+  border-radius: 0 0 0 60%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+
+  @media (min-width: 767px) {
+    width: 3rem;
+    height: 3rem;
   }
 `;
 
@@ -138,13 +186,19 @@ const ProfileComp = ({ data }) => {
     defaultValues: { username: data?.username || "", bio: data?.bio || "" },
   });
 
-  const { mutate } = usePatchMyInfo();
+  const { mutate: profileMutate } = usePatchMyInfo();
+
+  const { mutate: profileImgMutate } = usePostProfileImg();
 
   const onSubmit = (formData) => {
-    mutate(formData);
-    console.log("수정된 데이터: ", formData);
+    profileMutate(formData);
     // 서버 전송 로직
     setIsEditable(false);
+  };
+
+  const handleProfileImg = (e) => {
+    const file = e.target.files[0];
+    profileImgMutate(file);
   };
 
   const handleCancel = () => {
@@ -166,7 +220,26 @@ const ProfileComp = ({ data }) => {
       {isEditable ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <ProfileBox>
-            <ProfileImg src={data?.imgUlr} />
+            <ProfileImgWrapper>
+              <ProfileEditImg src={data?.imgUrl} />
+              <CameraBox
+                onClick={() => document.getElementById("profileInput").click()}
+              >
+                <IoIosCamera size={24} color="white" />
+              </CameraBox>
+              <ProfileImgInput
+                id="profileInput"
+                type="file"
+                accept="image/*"
+                onChange={handleProfileImg}
+              />
+            </ProfileImgWrapper>
+
+            <ProfileImgInput
+              type="file"
+              accept="image/*"
+              onChange={handleProfileImg}
+            />
             <ProfileBioBox>
               <ProfileNicknameBox>
                 <NameInput
@@ -205,7 +278,7 @@ const ProfileComp = ({ data }) => {
         </form>
       ) : (
         <ProfileBox>
-          <ProfileImg src={data?.imgUlr} />
+          <ProfileImg src={data?.imgUrl} />
           <ProfileBioBox>
             <ProfileNicknameBox>
               <ProfileNickname>{data?.username}</ProfileNickname>
