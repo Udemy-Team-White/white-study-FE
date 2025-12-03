@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Gray0, Gray4, Gray9 } from "../../styles/colors";
+import { Body } from "../../styles/fonts";
 
 const Footer = () => {
   return (
@@ -23,6 +24,8 @@ const FooterWrapper = styled.footer`
   color: ${Gray4};
   padding: 20px 0;
   margin-top: 40px;
+
+  ${Body}
 `;
 
 const Container = styled.div`
@@ -43,6 +46,7 @@ const Links = styled.div`
 const FooterLink = styled.a`
   color: ${Gray4};
   text-decoration: none;
+  ${Body}
 
   &:hover {
     text-decoration: underline;
