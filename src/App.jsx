@@ -18,6 +18,8 @@ import StudyPage from "./pages/Study/StudyPage";
 import MyStudiesPage from "./pages/MyStudies/MyStudiesPage";
 import MyStudyDashPage from "./pages/MyStudyDash/MyStudyDashPage";
 import StudyEditPage from "./pages/StudyEdit/StudyEditPage";
+import StorePage from "./pages/Store/StorePage";
+import Footer from "./components/layout/Footer";
 
 const HeaderBlock = styled.div`
   height: 63px;
@@ -107,7 +109,12 @@ function App() {
 
           {/* 스터디 수정 페이지 */}
           <Route path="/study/edit/:studyId" element={<StudyEditPage />} />
+
+          {/* 상점 페이지 */}
+          <Route path="/store" element={<StorePage />} />
         </Routes>
+
+        <Footer />
       </BrowserRouter>
     </div>
   );
