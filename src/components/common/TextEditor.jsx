@@ -1,12 +1,13 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import styled from "styled-components";
-import { Gray3, White } from "../../styles/colors";
+import { Black, Gray3, White } from "../../styles/colors";
 import { useEffect } from "react";
 
 const EditorWrapper = styled.div`
   background-color: ${White};
   border: 1px solid ${Gray3};
+  color: ${Black};
   border-radius: 6px;
 
   .tiptap {
