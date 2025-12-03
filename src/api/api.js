@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  // baseURL: "http://3.235.120.58:8081",
-  baseURL: "https://api-white-study-be.store",
+  // baseURL: "http://43.202.165.120:8081/",
+  baseURL: "https://api-white-study-be.store/",
   headers: {
     "Content-Type": "application/json",
   },
