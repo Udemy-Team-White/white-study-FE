@@ -32,13 +32,14 @@ const MemberBox = styled.div`
   }
 `;
 
-const ImgBox = styled.image`
+const ImgBox = styled.img`
   width: 115px;
   height: 115px;
   margin: 16px;
   background-color: ${StudyLilac};
   border-radius: 12px;
   flex-shrink: 0;
+  object-fit: cover;
 `;
 
 const NameBox = styled.div`
@@ -79,7 +80,7 @@ const Member = ({ studyId, isLeader }) => {
     <Container>
       {memberListData?.members?.map((data) => (
         <MemberBox>
-          <ImgBox />
+          <ImgBox src={data?.user?.imgUrl} />
           <NameBox>
             <div>
               <Nickname>{data?.user?.username}</Nickname>
