@@ -80,7 +80,11 @@ const Member = ({ studyId, isLeader }) => {
     <Container>
       {memberListData?.members?.map((data) => (
         <MemberBox>
-          <ImgBox src={data?.user?.imgUrl} />
+          {data?.user?.imgUrl ? (
+            <ImgBox src={data?.user?.imgUrl} />
+          ) : (
+            <ImgBox />
+          )}
           <NameBox>
             <div>
               <Nickname>{data?.user?.username}</Nickname>
