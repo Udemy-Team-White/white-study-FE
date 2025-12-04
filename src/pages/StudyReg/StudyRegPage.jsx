@@ -20,6 +20,10 @@ import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 import TextEditor from "../../components/common/TextEditor";
 
+const MarginBox = styled.div`
+  height: 40px;
+`;
+
 const LineBox = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.$grid};
@@ -212,6 +216,7 @@ const StudyRegPage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <MarginBox />
       <LineBox $grid={isDesktop ? "1fr 1fr" : "repeat(1, 2fr)"}>
         <TitleColumnBox>
           <TitleLabel>스터디 이름</TitleLabel>

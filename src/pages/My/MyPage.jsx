@@ -12,6 +12,7 @@ const MyPageBox = styled.div`
   max-width: 1080px;
   margin: 0 auto;
   margin-top: 52px;
+  width: 100%;
 `;
 
 const MyPage = () => {

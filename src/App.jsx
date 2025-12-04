@@ -21,6 +21,14 @@ import StudyEditPage from "./pages/StudyEdit/StudyEditPage";
 import StorePage from "./pages/Store/StorePage";
 import Footer from "./components/layout/Footer";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 const HeaderBlock = styled.div`
   height: 63px;
 `;
@@ -40,7 +48,7 @@ function App() {
   }, [dispatch, user]);
 
   return (
-    <div
+    <Container
       onClick={() => {
         isOpen && dispatch(setIsOpen(false));
       }}
@@ -116,7 +124,7 @@ function App() {
 
         <Footer />
       </BrowserRouter>
-    </div>
+    </Container>
   );
 }
 export default App;

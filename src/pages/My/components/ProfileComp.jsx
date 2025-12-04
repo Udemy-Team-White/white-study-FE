@@ -32,6 +32,7 @@ const ProfileBox = styled.div`
 const ProfileImgWrapper = styled.div`
   position: relative;
   border: 4px solid ${StudyLilac};
+  box-sizing: border-box;
   border-radius: 12px;
   height: 7.5rem;
   width: 7.5rem;
@@ -77,6 +78,21 @@ const CameraBox = styled.div`
 
 const ProfileImg = styled.img`
   background-color: ${Gray4};
+  height: 7.5rem;
+  width: 7.5rem;
+  border-radius: 12px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  object-fit: cover;
+
+  @media (min-width: 767px) {
+    height: 10rem;
+    width: 10rem;
+  }
+`;
+
+const ProfileImgNone = styled.div`
+  background-color: ${StudyLilac};
   height: 7.5rem;
   width: 7.5rem;
   border-radius: 12px;
@@ -278,7 +294,11 @@ const ProfileComp = ({ data }) => {
         </form>
       ) : (
         <ProfileBox>
-          <ProfileImg src={data?.imgUrl} />
+          {data?.imgUrl ? (
+            <ProfileImg src={data?.imgUrl} />
+          ) : (
+            <ProfileImgNone />
+          )}
           <ProfileBioBox>
             <ProfileNicknameBox>
               <ProfileNickname>{data?.username}</ProfileNickname>

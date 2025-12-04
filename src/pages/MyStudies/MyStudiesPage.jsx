@@ -29,6 +29,7 @@ const Container = styled.div`
   display: flex;
   gap: 48px;
   flex-direction: column;
+  margin-top: 40px;
 `;
 
 const StudyContainer = styled.div`

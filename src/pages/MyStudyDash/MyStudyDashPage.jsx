@@ -8,6 +8,12 @@ import Manage from "./ManageComp/Manage";
 import { useParams } from "react-router-dom";
 import ReportReg from "./ReportRegComp/ReportReg";
 import { useGetDashboard } from "../../api/queries/useGetDashboard";
+import styled from "styled-components";
+
+const Container = styled.div`
+  width: 100%;
+  margin-top: 40px;
+`;
 
 const MyStudyDashPage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -18,7 +24,7 @@ const MyStudyDashPage = () => {
   const isLeader = dashboardData?.studyInfo?.myRole === "LEADER";
 
   return (
-    <>
+    <Container>
       <MyStudyHeader
         isLeader={isLeader}
         activeTab={activeTab}
@@ -36,7 +42,7 @@ const MyStudyDashPage = () => {
       {activeTab === 6 && (
         <ReportReg studyId={studyId} setActiveTab={setActiveTab} />
       )}
-    </>
+    </Container>
   );
 };
 
