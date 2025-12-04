@@ -76,6 +76,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 
   padding: 0 24px;
   box-sizing: border-box;
@@ -112,6 +113,7 @@ const MemberRestBox = styled.div`
 const CategoryTagBox = styled.div`
   ${TagBoxStyle}
   margin-bottom: 16px;
+  margin-top: 40px;
 `;
 
 const CategoryTag = styled.div`
