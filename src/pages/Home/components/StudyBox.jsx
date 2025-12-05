@@ -74,6 +74,12 @@ const TagBox = styled.div`
   cursor: pointer;
 `;
 
+const NoneTagBox = styled.div`
+  max-height: 34px;
+  padding: 12px 20px;
+  margin: 12px 0;
+`;
+
 const Tag = styled.div`
   ${TagStyle}
   background-color: ${(props) => (props?.match && StudyLilac) || Lilac2};
@@ -154,6 +160,7 @@ const StudyBox = ({ data }) => {
           {data?.categories?.map((tagData, index) => (
             <Tag key={"tag" + index}>{tagData}</Tag>
           ))}
+          <NoneTagBox />
         </TagBox>
         <ContainerBottom>
           <PersonnelBox>
