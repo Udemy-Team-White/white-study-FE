@@ -80,7 +80,7 @@ const ShortcutComp = () => {
           </ShortcutTextBox>
         </Shortcut>
 
-        <Shortcut>
+        <Shortcut onClick={() => navigate(`/store`)}>
           <FaStore size={60} color={Lilac7} />
           <ShortcutTextBox>
             <ShortcutText>아이템 상점</ShortcutText>

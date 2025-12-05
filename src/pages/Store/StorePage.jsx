@@ -3,6 +3,7 @@ import ItemComp from "../../components/common/ItemComp";
 
 const Container = styled.div`
   max-width: 1080px;
+  width: 100%;
   display: grid;
   gap: 24px;
   grid-template-columns: 1fr 1fr;

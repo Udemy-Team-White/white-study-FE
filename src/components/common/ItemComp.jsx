@@ -27,7 +27,7 @@ const ImgBox = styled.image`
 `;
 
 const ItemFrame = styled.image`
-  border: 1px solid ${Green};
+  border: 1px solid Gold;
   width: 100%;
   aspect-ratio: 1 / 1;
   position: absolute;
