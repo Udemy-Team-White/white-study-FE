@@ -23,7 +23,6 @@ const FooterWrapper = styled.footer`
   background-color: ${Gray9};
   color: ${Gray4};
   padding: 20px 0;
-  margin-top: 40px;
   width: 100%;
 
   ${Body}

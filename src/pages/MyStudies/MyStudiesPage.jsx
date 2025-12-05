@@ -30,6 +30,7 @@ const Container = styled.div`
   gap: 48px;
   flex-direction: column;
   margin-top: 40px;
+  margin-bottom: 40px;
 `;
 
 const StudyContainer = styled.div`

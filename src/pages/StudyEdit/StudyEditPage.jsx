@@ -35,6 +35,7 @@ const LineBox = styled.div`
   margin: 0 auto 4px auto;
   padding: 0 24px;
   box-sizing: border-box;
+  margin-bottom: ${(props) => props.$marginBottom || "0"};
 `;
 
 const TitleColumnBox = styled.div`
@@ -114,6 +115,7 @@ const CategoryTagBox = styled.div`
   gap: 8px;
   flex-wrap: wrap;
   margin: 8px 0;
+  margin-bottom: 20px;
 `;
 
 const CategoryTag = styled.div`
@@ -483,7 +485,10 @@ const StudyEditPage = () => {
         </CategoryTagBox>
       </LineBox>
 
-      <LineBox $grid={isDesktop ? "4fr 2fr 2fr" : "1fr 1fr"}>
+      <LineBox
+        $grid={isDesktop ? "4fr 2fr 2fr" : "1fr 1fr"}
+        $marginBottom="40px"
+      >
         {isDesktop && <div></div>}
         <CancleButton type="button" onClick={handleCancle}>
           취소하기
