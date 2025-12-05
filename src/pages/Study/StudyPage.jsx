@@ -73,6 +73,7 @@ const data = {
 const Container = styled.div`
   max-width: 800px;
   margin: 20px auto;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   gap: 24px;
