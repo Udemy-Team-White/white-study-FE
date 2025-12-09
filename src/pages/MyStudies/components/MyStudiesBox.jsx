@@ -148,7 +148,13 @@ const LinkBox = styled(Link)`
 const MyStudiesBox = ({ data }) => {
   return (
     <Container>
-      <LinkBox to={`/my/study/${data?.studyId}`}>
+      <LinkBox
+        to={
+          data?.status !== "FINISHED"
+            ? `/my/study/${data?.studyId}`
+            : `/my/study/done/${data?.studyId}`
+        }
+      >
         <ContainerTop>
           <OnlineTag>{data?.status}</OnlineTag>
         </ContainerTop>

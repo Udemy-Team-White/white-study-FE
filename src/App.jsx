@@ -20,6 +20,7 @@ import MyStudyDashPage from "./pages/MyStudyDash/MyStudyDashPage";
 import StudyEditPage from "./pages/StudyEdit/StudyEditPage";
 import StorePage from "./pages/Store/StorePage";
 import Footer from "./components/layout/Footer";
+import StudyDonePage from "./pages/StudyDone/StudyDonePage";
 
 const Container = styled.div`
   display: flex;
@@ -120,6 +121,9 @@ function App() {
 
           {/* 상점 페이지 */}
           <Route path="/store" element={<StorePage />} />
+
+          {/* 완료한 스터디 페이지 */}
+          <Route path="/my/study/done/:studyId" element={<StudyDonePage />} />
         </Routes>
 
         <Footer />
