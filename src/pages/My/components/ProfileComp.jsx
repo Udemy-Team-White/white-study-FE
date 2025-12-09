@@ -33,13 +33,14 @@ const ProfileImgWrapper = styled.div`
   position: relative;
   border: 4px solid ${StudyLilac};
   box-sizing: border-box;
-  border-radius: 16px;
+  border-radius: 12px;
   height: 7.5rem;
   width: 7.5rem;
   overflow: hidden;
   flex-shrink: 0;
 
   @media (min-width: 767px) {
+    border-radius: 16px;
     height: 10rem;
     width: 10rem;
   }
