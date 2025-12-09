@@ -115,8 +115,8 @@ const Manage = ({ studyId }) => {
       {applicantsList?.map((applicant) => (
         <ApplicantBox>
           <ProfileBox>
-            {applicant?.user?.imgUrl ? (
-              <ImgBox src={applicant?.user?.imgUrl} />
+            {applicant?.user?.profileImageUrl ? (
+              <ImgBox src={applicant?.user?.profileImageUrl} />
             ) : (
               <ImgBox />
             )}
