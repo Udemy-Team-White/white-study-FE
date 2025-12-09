@@ -119,3 +119,8 @@ export const deleteMember = ({ studyId, memberId }) => {
 export const postStudyId = ({ studyId, payload }) => {
   return api.post(`/api/studies/${studyId}`, payload);
 };
+
+//커뮤니티 & 게이미피케이션
+export const postPraise = ({ studyId, body }) => {
+  return api.post(`/api/studies/${studyId}/praises`, body);
+};
