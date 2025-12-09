@@ -21,7 +21,7 @@ const Overlay = styled.div`
 const ModalBox = styled.div`
   background-color: ${(props) => props.$bgColor || Lilac0};
   width: 100%;
-  max-width: 540px;
+  max-width: ${(props) => props.$maxWidth || "540px"};
   padding: 24px;
   border-radius: 16px;
   box-sizing: border-box;
@@ -30,12 +30,16 @@ const ModalBox = styled.div`
   overflow-y: auto;
 `;
 
-const Modal = ({ children, bgColor }) => {
+const Modal = ({ children, bgColor, maxWidth }) => {
   const dispatch = useDispatch();
 
   return (
     <Overlay onClick={() => dispatch(setIsModalOpen(false))}>
-      <ModalBox $bgColor={bgColor} onClick={(e) => e.stopPropagation()}>
+      <ModalBox
+        $bgColor={bgColor}
+        $maxWidth={maxWidth}
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </ModalBox>
     </Overlay>

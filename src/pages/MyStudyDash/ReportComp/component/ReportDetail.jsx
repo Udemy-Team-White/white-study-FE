@@ -29,12 +29,14 @@ const SummaryBox = styled.div`
   border-radius: 16px;
   padding: 24px;
   display: flex;
+  align-items: center;
 `;
 
 const LightIcon = styled(FaRegLightbulb)`
   height: 24px;
   color: ${StudyLilac};
   margin-right: 16px;
+  flex-shrink: 0;
 `;
 
 const GridBox = styled.div`

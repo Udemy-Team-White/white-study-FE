@@ -106,7 +106,7 @@ const Report = ({ studyId, setActiveTab }) => {
   return (
     <>
       {isModalOpen && (
-        <Modal bgColor={White} reportId={selectedReportId}>
+        <Modal bgColor={White} maxWidth={"900px"} reportId={selectedReportId}>
           <ReportDetail reportId={selectedReportId} />
         </Modal>
       )}
