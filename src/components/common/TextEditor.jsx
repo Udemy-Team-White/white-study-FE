@@ -31,8 +31,8 @@ const ToolButton = styled.button`
   border: none;
   padding: 4px 6px;
   cursor: pointer;
-  color: ${(props) => (props.active ? "#4f46e5" : "#333")};
-  font-weight: ${(props) => (props.active ? "bold" : "normal")};
+  color: ${(props) => (props.$active ? "#4f46e5" : "#333")};
+  font-weight: ${(props) => (props.$active ? "bold" : "normal")};
   border-radius: 4px;
   transition: background 0.2s;
 
@@ -86,7 +86,7 @@ const EditorMenuBar = ({ editor }) => {
       <ToolButton
         type="button"
         onClick={() => editor.chain().focus().toggleBold().run()}
-        active={editor.isActive("bold")}
+        $active={editor.isActive("bold")}
         title="Bold (Ctrl+B)"
       >
         <b>B</b>
@@ -95,7 +95,7 @@ const EditorMenuBar = ({ editor }) => {
       <ToolButton
         type="button"
         onClick={() => editor.chain().focus().toggleUnderline().run()}
-        active={editor.isActive("underline")}
+        $active={editor.isActive("underline")}
         title="Underline (Ctrl+U)"
       >
         <u>U</u>
@@ -104,7 +104,7 @@ const EditorMenuBar = ({ editor }) => {
       <ToolButton
         type="button"
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        active={editor.isActive("strike")}
+        $active={editor.isActive("strike")}
         title="Strike"
       >
         <s>S</s>
@@ -115,7 +115,7 @@ const EditorMenuBar = ({ editor }) => {
           type="button"
           key={level}
           onClick={() => editor.chain().focus().toggleHeading({ level }).run()}
-          active={editor.isActive("heading", { level })}
+          $active={editor.isActive("heading", { level })}
           title={`Heading ${level}`}
         >
           <b>H{level}</b>

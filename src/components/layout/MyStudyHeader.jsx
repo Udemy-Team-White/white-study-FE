@@ -30,11 +30,11 @@ const TabMenu = styled.div`
 const Tab = styled.button`
   width: 100%;
   height: 56px;
-  background-color: ${(props) => (props.active ? `${Lilac0}` : `${Lilac2}`)};
-  color: ${(props) => (props.active ? `${StudyLilac}` : `${Lilac3}`)};
+  background-color: ${(props) => (props.$active ? `${Lilac0}` : `${Lilac2}`)};
+  color: ${(props) => (props.$active ? `${StudyLilac}` : `${Lilac3}`)};
   border: none;
   cursor: pointer;
-  ${(props) => (props.active ? `${BodyBold}` : `${Body}`)};
+  ${(props) => (props.$active ? `${BodyBold}` : `${Body}`)};
   border-radius: 16px 16px 0 0;
   transition:
     background 0.2s,
@@ -45,7 +45,7 @@ const Tab = styled.button`
     color: ${White};
   }
   @media (min-width: 767px) {
-    color: ${(props) => (props.active ? `${StudyLilac}` : `${Black}`)};
+    color: ${(props) => (props.$active ? `${StudyLilac}` : `${Black}`)};
   }
 `;
 
@@ -103,7 +103,7 @@ const MyStudyHeader = ({ isLeader, activeTab, setActiveTab }) => {
         {tabs.map((tab) => (
           <Tab
             key={tab.id}
-            active={tab.id === activeTab}
+            $active={tab.id === activeTab}
             onClick={() => setActiveTab(tab.id)}
           >
             {isDesktop ? tab.name : tab.icon}

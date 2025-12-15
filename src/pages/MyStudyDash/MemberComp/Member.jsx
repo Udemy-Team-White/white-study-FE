@@ -78,8 +78,8 @@ const Member = ({ studyId, isLeader }) => {
 
   return (
     <Container>
-      {memberListData?.members?.map((data) => (
-        <MemberBox>
+      {memberListData?.members?.map((data, index) => (
+        <MemberBox key={"member" + index}>
           {data?.user?.imgUrl ? (
             <ImgBox src={data?.user?.imgUrl} />
           ) : (

@@ -112,8 +112,8 @@ const Manage = ({ studyId }) => {
       </StudyEditButton>
       <TitleLabel>신청자 목록</TitleLabel>
       {applicantsList?.length === 0 && <div>신청자가 없습니다</div>}
-      {applicantsList?.map((applicant) => (
-        <ApplicantBox>
+      {applicantsList?.map((applicant, index) => (
+        <ApplicantBox key={"applicant" + index}>
           <ProfileBox>
             {applicant?.user?.profileImageUrl ? (
               <ImgBox src={applicant?.user?.profileImageUrl} />
